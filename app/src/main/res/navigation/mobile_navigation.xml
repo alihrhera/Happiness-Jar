@@ -7,5 +7,35 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="era.apps.happinessjar.ui.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_allLikedMessagesFragment"
+            app:destination="@id/allLikedMessagesFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_storiesFragment"
+            app:destination="@id/storiesFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_whatsAppMessagesFragment"
+            app:destination="@id/whatsAppMessagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="era.apps.happinessjar.ui.message.MessagesFragment"
+        android:label="fragment_stories"
+        tools:layout="@layout/fragment_stories" />
+    <fragment
+        android:id="@+id/allLikedMessagesFragment"
+        android:name="era.apps.happinessjar.ui.message.AllLikedMessagesFragment"
+        android:label="AllLikedMessagesFragment" />
+    <fragment
+        android:id="@+id/storiesFragment"
+        android:name="era.apps.happinessjar.ui.stories.StoriesFragment"
+        android:label="StoriesFragment" />
+    <fragment
+        android:id="@+id/whatsAppMessagesFragment"
+        android:name="era.apps.happinessjar.ui.message.WhatsAppMessagesFragment"
+        android:label="WhatsAppMessagesFragment" />
 </navigation>
