@@ -19,7 +19,7 @@ public interface StoryDao {
     @Insert   // insert message to database
     void insert(Story message);
     // get all app message from database witch type = message
-    @Query("Select * from Story  ")
+    @Query("Select * from Story")
     LiveData<List<Story>>getAllStory();
 
 }

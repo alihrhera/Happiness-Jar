@@ -18,7 +18,7 @@ class StoryRepository {
     private LiveData<List<Story>> allStories;
 
     public StoryRepository(Application application) {
-        DataBaseHelper storyData = DataBaseHelper.getStoryInstance(application);
+        DataBaseHelper storyData = DataBaseHelper.getInstance(application);
         storyDao = storyData.storyDao();
         allStories = storyDao.getAllStory();
 

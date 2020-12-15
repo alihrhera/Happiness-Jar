@@ -10,24 +10,23 @@ import androidx.room.RoomDatabase;
 import era.apps.happinessjar.util.callback.MessageDao;
 import era.apps.happinessjar.util.callback.StoryDao;
 
-@Database(entities = {AppMessage.class}, version = 1)
+@Database(entities = {AppMessage.class,Story.class}, version = 1)
 abstract class DataBaseHelper extends RoomDatabase {
 
     public abstract MessageDao messageDao();
+    public abstract StoryDao storyDao();
 
-    private static DataBaseHelper messageInstance;
+    private static DataBaseHelper instance;
     public static synchronized DataBaseHelper getInstance(Context context) {
-        if (messageInstance == null) {
-            messageInstance = Room.
-                    databaseBuilder(context.getApplicationContext()
-                            , DataBaseHelper.class, "Message")
+        if (instance == null) {
+            instance = Room.
+                    databaseBuilder(context.getApplicationContext(), DataBaseHelper.class, "Happiness")
                     .fallbackToDestructiveMigration().build();
         }
-        return messageInstance;
+        return instance;
     }
 
-    public abstract StoryDao storyDao();
-    private static DataBaseHelper storyInstance;
+   /* private static DataBaseHelper storyInstance;
     public static synchronized DataBaseHelper getStoryInstance(Context context) {
         if (storyInstance == null) {
             storyInstance = Room.
@@ -37,5 +36,5 @@ abstract class DataBaseHelper extends RoomDatabase {
         }
         return storyInstance;
     }
-
+    */
 }

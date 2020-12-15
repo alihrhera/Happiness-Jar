@@ -3,39 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/NavSplashFragment">
     <fragment
-        android:id="@+id/splashFragment"
+        android:id="@+id/NavSplashFragment"
         android:name="era.apps.happinessjar.ui.SplashFragment"
         android:label="SplashFragment" >
+
         <action
-            android:id="@+id/action_splashFragment_to_messagesFragment"
-            app:destination="@id/messagesFragment" />
+            android:id="@+id/action_NavSplashFragment_to_navMessagesFragment"
+            app:destination="@id/navMessagesFragment" />
         <action
-            android:id="@+id/action_splashFragment_to_allLikedMessagesFragment"
-            app:destination="@id/allLikedMessagesFragment" />
+            android:id="@+id/action_NavSplashFragment_to_navAllLikedMessagesFragment"
+            app:destination="@id/navAllLikedMessagesFragment" />
         <action
-            android:id="@+id/action_splashFragment_to_storiesFragment"
-            app:destination="@id/storiesFragment" />
+            android:id="@+id/action_NavSplashFragment_to_navWhatsAppMessagesFragment"
+            app:destination="@id/navWhatsAppMessagesFragment" />
         <action
-            android:id="@+id/action_splashFragment_to_whatsAppMessagesFragment"
-            app:destination="@id/whatsAppMessagesFragment" />
+            android:id="@+id/action_NavSplashFragment_to_navStoriesFragment"
+            app:destination="@id/navStoriesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/messagesFragment"
+        android:id="@+id/navMessagesFragment"
         android:name="era.apps.happinessjar.ui.message.MessagesFragment"
         android:label="fragment_stories"
         tools:layout="@layout/fragment_stories" />
     <fragment
-        android:id="@+id/allLikedMessagesFragment"
+        android:id="@+id/navAllLikedMessagesFragment"
         android:name="era.apps.happinessjar.ui.message.AllLikedMessagesFragment"
         android:label="AllLikedMessagesFragment" />
     <fragment
-        android:id="@+id/storiesFragment"
+        android:id="@+id/navStoriesFragment"
         android:name="era.apps.happinessjar.ui.stories.StoriesFragment"
         android:label="StoriesFragment" />
     <fragment
-        android:id="@+id/whatsAppMessagesFragment"
+        android:id="@+id/navWhatsAppMessagesFragment"
         android:name="era.apps.happinessjar.ui.message.WhatsAppMessagesFragment"
         android:label="WhatsAppMessagesFragment" />
 </navigation>

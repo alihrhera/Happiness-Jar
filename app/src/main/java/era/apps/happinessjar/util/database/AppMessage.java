@@ -1,8 +1,8 @@
 package era.apps.happinessjar.util.database;
 
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
 
 @Entity(tableName = "Message") // room table name  for Message
 public   class AppMessage {

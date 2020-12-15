@@ -4,15 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+
     tools:context=".MainActivity">
 
     <fragment
-        app:navGraph="@navigation/mobile_navigation"
+        android:background="@color/colorPrimaryDark"
+
+        android:id="@+id/mainFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:defaultNavHost="true"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:id="@+id/fragmentContainer"
+
+        app:navGraph="@navigation/mobile_navigation"
+        android:paddingBottom="72dp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="72dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <edmt.dev.testcurved.CurvedBNView
+            android:background="@color/colorPrimaryDark"
+            android:id="@+id/btomNaveView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:background="@color/colorPrimaryDark"
+                android:id="@+id/line_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="40dp">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="45dp"
+                    android:visibility="gone"
+                    android:id="@+id/fab1"
+                    android:layout_height="45dp"
+                    android:layout_centerInParent="true" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="45dp"
+                    android:visibility="gone"
+                    android:id="@+id/fab2"
+                    android:layout_height="45dp"
+                    android:layout_centerInParent="true" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="45dp"
+                    android:visibility="gone"
+                    android:id="@+id/fab3"
+                    android:layout_height="45dp"
+                    android:layout_centerInParent="true" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="45dp"
+                    android:visibility="gone"
+                    android:id="@+id/fab4"
+                    android:layout_height="45dp"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
 
 
+        </edmt.dev.testcurved.CurvedBNView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
