@@ -1,8 +1,10 @@
 package era.apps.happinessjar.util.database;
 
 
+import android.animation.ObjectAnimator;
 import android.app.Application;
 import android.os.AsyncTask;
+import android.view.View;
 
 import androidx.lifecycle.LiveData;
 
@@ -28,6 +30,7 @@ class MessageRepository {
         allAppMessage = messageDao.getAllAppMessage();
         allAppWhatsApp = messageDao.getAllAppWhatsApp();
         allLikesMessage = messageDao.getAllLikesMessage();
+
     }
 
 

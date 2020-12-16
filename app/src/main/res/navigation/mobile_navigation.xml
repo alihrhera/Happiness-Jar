@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_NavSplashFragment_to_navStoriesFragment"
             app:destination="@id/navStoriesFragment" />
+        <action
+            android:id="@+id/action_NavSplashFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/navMessagesFragment"
@@ -39,4 +42,8 @@
         android:id="@+id/navWhatsAppMessagesFragment"
         android:name="era.apps.happinessjar.ui.message.WhatsAppMessagesFragment"
         android:label="WhatsAppMessagesFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="era.apps.happinessjar.ui.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

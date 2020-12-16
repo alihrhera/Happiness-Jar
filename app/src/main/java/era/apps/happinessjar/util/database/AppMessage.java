@@ -1,6 +1,9 @@
 package era.apps.happinessjar.util.database;
 
 
+import android.animation.ObjectAnimator;
+import android.view.View;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -18,7 +21,10 @@ public   class AppMessage {
         this.content = content;
         this.status = status;
         this.type = type;
-    }
+
+
+
+           }
 
     public void setId(int id) {
         this.id = id;

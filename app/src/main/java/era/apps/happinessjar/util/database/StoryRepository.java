@@ -8,9 +8,7 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import era.apps.happinessjar.util.callback.MessageDao;
 import era.apps.happinessjar.util.callback.StoryDao;
-
 class StoryRepository {
     /*
      * */
@@ -24,9 +22,6 @@ class StoryRepository {
 
 
     }
-
-
-
 
 
     public LiveData<List<Story>> getAllStories() {

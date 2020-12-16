@@ -11,5 +11,6 @@
     <color name="color_chat_bg">#21FF06</color>
     <color name="color_notification_bg">#80007F</color>
     <color name="color_profile_bg">#0D5FFF</color>
+    <color name="white">#fff</color>
 
 </resources>
