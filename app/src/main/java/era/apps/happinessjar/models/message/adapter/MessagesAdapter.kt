@@ -1,4 +1,4 @@
-package era.apps.happinessjar.util.adapters
+package era.apps.happinessjar.models.message.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import era.apps.happinessjar.R
 import era.apps.happinessjar.util.callback.OnItemClick
-import era.apps.happinessjar.util.database.AppMessage
+import era.apps.happinessjar.models.message.data_base.AppMessage
 
 
 

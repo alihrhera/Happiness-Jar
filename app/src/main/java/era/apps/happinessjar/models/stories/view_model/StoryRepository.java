@@ -1,28 +1,27 @@
-package era.apps.happinessjar.util.database;
+package era.apps.happinessjar.models.stories.view_model;
 
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import era.apps.happinessjar.util.AppApi;
-import era.apps.happinessjar.util.callback.StoryDao;
+import era.apps.happinessjar.models.stories.data_base.StoryDataBaseHelper;
+import era.apps.happinessjar.models.stories.data_base.StoryDao;
+import era.apps.happinessjar.models.stories.data_base.Story;
 
-class StoryRepository {
+public class StoryRepository {
     /*
      * */
     private final StoryDao storyDao;
     private LiveData<List<Story>> allStories;
 
     public StoryRepository(Application application) {
-        DataBaseHelper storyData = DataBaseHelper.getInstance(application);
+        StoryDataBaseHelper storyData = StoryDataBaseHelper.getInstance(application);
         storyDao = storyData.storyDao();
         allStories = storyDao.getAllStory();
-
         Thread t = new Thread(() -> {
 
             if (storyDao.getCount() == 0) {

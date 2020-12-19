@@ -1,4 +1,4 @@
-package era.apps.happinessjar.util.callback;
+package era.apps.happinessjar.models.stories.callback;
 
 
 import java.util.List;

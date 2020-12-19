@@ -1,7 +1,6 @@
-package era.apps.happinessjar.util.adapters
+package era.apps.happinessjar.models.stories.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import era.apps.happinessjar.R
-import era.apps.happinessjar.util.database.Story
+import era.apps.happinessjar.models.stories.data_base.Story
 
 class StoriesAdapter : ListAdapter<Story, StoriesAdapter.StoriesViewHolder>(SleepNightDiffCallback()) {
 

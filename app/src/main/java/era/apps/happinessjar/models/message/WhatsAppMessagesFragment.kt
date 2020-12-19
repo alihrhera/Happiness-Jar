@@ -1,4 +1,4 @@
-package era.apps.happinessjar.ui.message
+package era.apps.happinessjar.models.message
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,27 +10,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import era.apps.happinessjar.MainActivity
 import era.apps.happinessjar.R
-import era.apps.happinessjar.util.adapters.MessagesAdapter
+import era.apps.happinessjar.models.message.adapter.MessagesAdapter
+import era.apps.happinessjar.models.message.data_base.AppMessage
 import era.apps.happinessjar.util.callback.OnItemClick
-import era.apps.happinessjar.util.database.AppMessage
 
-// show Liked  Message of the app
+// show WhatsApp Messages
 
-class AllLikedMessagesFragment : Fragment() {
+class WhatsAppMessagesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val root= inflater.inflate(R.layout.fragment_liked_massges, container, false)
-
-        val model= (activity as MainActivity).getViewModel()
-
-
+        val root=inflater.inflate(R.layout.fragment_whats_app_massges, container, false)
         val adapter = MessagesAdapter()
+        val model= (activity as MainActivity).getMessageViwModel()
 
-
-
-       model.allLikesMessage.observe(activity as MainActivity,
+        model .allAppWhatsApp.observe(activity as MainActivity,
                 object : Observer<List<AppMessage>> {
                     override fun onChanged(list: List<AppMessage>?) {
                         run {
@@ -60,11 +55,16 @@ class AllLikedMessagesFragment : Fragment() {
         }
 
 
-        val showAllLikeMessage: RecyclerView =root.findViewById(R.id.showAllLikeMessage)
-        showAllLikeMessage.layoutManager= LinearLayoutManager(context)
-        showAllLikeMessage.adapter=adapter
+
+        val showAllWhatsAppMessage:RecyclerView=root.findViewById(R.id.showAllWhatsAppMessage)
+        showAllWhatsAppMessage.layoutManager=LinearLayoutManager(context)
+        showAllWhatsAppMessage.adapter=adapter
+
+
 
         return root
+
     }
+
 
 }

@@ -1,8 +1,5 @@
-package era.apps.happinessjar.util.database;
+package era.apps.happinessjar.models.message.data_base;
 
-
-import android.animation.ObjectAnimator;
-import android.view.View;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

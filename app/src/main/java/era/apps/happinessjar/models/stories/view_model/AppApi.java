@@ -1,4 +1,4 @@
-package era.apps.happinessjar.util;
+package era.apps.happinessjar.models.stories.view_model;
 
 import android.util.Log;
 
@@ -9,8 +9,8 @@ import com.androidnetworking.interfaces.ParsedRequestListener;
 
 import java.util.List;
 
-import era.apps.happinessjar.util.callback.OnListLoad;
-import era.apps.happinessjar.util.database.Story;
+import era.apps.happinessjar.models.stories.callback.OnListLoad;
+import era.apps.happinessjar.models.stories.data_base.Story;
 
 public class AppApi {
     private static final AppApi obj = new AppApi();

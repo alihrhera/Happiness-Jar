@@ -1,4 +1,4 @@
-package era.apps.happinessjar.util.database;
+package era.apps.happinessjar.models.stories.data_base;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

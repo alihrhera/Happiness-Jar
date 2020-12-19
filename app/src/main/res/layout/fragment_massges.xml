@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.message.MessagesFragment">
+    tools:context=".models.message.MessagesFragment">
     <androidx.recyclerview.widget.RecyclerView
         android:padding="@dimen/_5sdp"
         tools:itemCount="10"

@@ -1,4 +1,4 @@
-package era.apps.happinessjar.util.database;
+package era.apps.happinessjar.models.message.view_model;
 
 
 import android.app.Application;
@@ -9,20 +9,19 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+import era.apps.happinessjar.models.message.data_base.AppMessage;
+
 public class MessagesViewModel extends AndroidViewModel {
     private MessageRepository repository;
     private LiveData<List<AppMessage>> allAppMessage;
     private LiveData<List<AppMessage>> allAppWhatsApp;
     private LiveData<List<AppMessage>> allLikesMessage;
-    private LiveData<List<Story>> allStories;
 
 
     public MessagesViewModel(@NonNull Application application) {
         super(application);
         repository = new MessageRepository(application);
-        StoryRepository storyRepository = new StoryRepository(application);
 
-        allStories      = storyRepository.getAllStories();
         allAppMessage   = repository.getAllAppMessage();
         allAppWhatsApp  = repository.getAllAppWhatsApp();
         allLikesMessage = repository.getAllLikesMessage();
@@ -47,7 +46,4 @@ public class MessagesViewModel extends AndroidViewModel {
     }
 
 
-    public LiveData<List<Story>> getAllStories() {
-        return allStories;
-    }
 }

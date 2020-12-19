@@ -5,7 +5,7 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-import era.apps.happinessjar.util.database.Story;
+import era.apps.happinessjar.models.stories.data_base.Story;
 
 public class DataManger {
 
@@ -27,15 +27,4 @@ public class DataManger {
 
 
 
-
-
-    private List<Story>storyList=new ArrayList();
-
-    public List<Story> getStoryList() {
-        return storyList;
-    }
-
-    public void setStoryList(List<Story> storyList) {
-        this.storyList = storyList;
-    }
 }

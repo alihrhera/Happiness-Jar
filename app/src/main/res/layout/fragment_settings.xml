@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_5sdp"
-    tools:context=".ui.message.MessagesFragment">
+    tools:context=".models.message.MessagesFragment">
 
     <androidx.cardview.widget.CardView
         android:elevation="@dimen/_3sdp"

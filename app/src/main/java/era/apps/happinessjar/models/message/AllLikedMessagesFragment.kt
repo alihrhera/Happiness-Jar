@@ -1,4 +1,4 @@
-package era.apps.happinessjar.ui.message
+package era.apps.happinessjar.models.message
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,22 +10,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import era.apps.happinessjar.MainActivity
 import era.apps.happinessjar.R
-import era.apps.happinessjar.util.adapters.MessagesAdapter
+import era.apps.happinessjar.models.message.adapter.MessagesAdapter
+import era.apps.happinessjar.models.message.data_base.AppMessage
 import era.apps.happinessjar.util.callback.OnItemClick
-import era.apps.happinessjar.util.database.AppMessage
 
-// show WhatsApp Messages
+// show Liked  Message of the app
 
-class WhatsAppMessagesFragment : Fragment() {
+class AllLikedMessagesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val root=inflater.inflate(R.layout.fragment_whats_app_massges, container, false)
-        val adapter = MessagesAdapter()
-        val model= (activity as MainActivity).getViewModel()
+        val root= inflater.inflate(R.layout.fragment_liked_massges, container, false)
 
-        model .allAppWhatsApp.observe(activity as MainActivity,
+        val model= (activity as MainActivity).getMessageViwModel()
+
+
+        val adapter = MessagesAdapter()
+
+
+
+       model.allLikesMessage.observe(activity as MainActivity,
                 object : Observer<List<AppMessage>> {
                     override fun onChanged(list: List<AppMessage>?) {
                         run {
@@ -55,16 +60,11 @@ class WhatsAppMessagesFragment : Fragment() {
         }
 
 
-
-        val showAllWhatsAppMessage:RecyclerView=root.findViewById(R.id.showAllWhatsAppMessage)
-        showAllWhatsAppMessage.layoutManager=LinearLayoutManager(context)
-        showAllWhatsAppMessage.adapter=adapter
-
-
+        val showAllLikeMessage: RecyclerView =root.findViewById(R.id.showAllLikeMessage)
+        showAllLikeMessage.layoutManager= LinearLayoutManager(context)
+        showAllLikeMessage.adapter=adapter
 
         return root
-
     }
-
 
 }

@@ -1,16 +1,16 @@
-package era.apps.happinessjar.util.database;
+package era.apps.happinessjar.models.message.view_model;
 
 
-import android.animation.ObjectAnimator;
 import android.app.Application;
 import android.os.AsyncTask;
-import android.view.View;
 
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import era.apps.happinessjar.util.callback.MessageDao;
+import era.apps.happinessjar.models.message.data_base.MessageDao;
+import era.apps.happinessjar.models.message.data_base.AppMessage;
+import era.apps.happinessjar.models.message.data_base.MessageDataBaseHelper;
 
 class MessageRepository {
     /*
@@ -25,7 +25,7 @@ class MessageRepository {
     private LiveData<List<AppMessage>> allLikesMessage;
 
     public MessageRepository(Application application) {
-        DataBaseHelper dataBase = DataBaseHelper.getInstance(application);
+        MessageDataBaseHelper dataBase = MessageDataBaseHelper.getInstance(application);
         messageDao = dataBase.messageDao();
         allAppMessage = messageDao.getAllAppMessage();
         allAppWhatsApp = messageDao.getAllAppWhatsApp();

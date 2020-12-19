@@ -1,7 +1,6 @@
-package era.apps.happinessjar.util.adapters;
+package era.apps.happinessjar.models.slider.adapter;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

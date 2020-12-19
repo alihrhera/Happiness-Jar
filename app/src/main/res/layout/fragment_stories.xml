@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
 
-    tools:context=".ui.message.MessagesFragment">
+    tools:context=".models.message.MessagesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:background="@color/openGray"

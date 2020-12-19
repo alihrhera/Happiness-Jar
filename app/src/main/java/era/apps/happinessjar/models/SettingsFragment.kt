@@ -1,4 +1,4 @@
-package era.apps.happinessjar.ui
+package era.apps.happinessjar.models
 
 import android.app.Dialog
 import android.content.Intent

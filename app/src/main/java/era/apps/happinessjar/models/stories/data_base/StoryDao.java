@@ -1,17 +1,12 @@
-package era.apps.happinessjar.util.callback;
+package era.apps.happinessjar.models.stories.data_base;
 
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
 
 import java.util.List;
-
-import era.apps.happinessjar.util.database.AppMessage;
-import era.apps.happinessjar.util.database.Story;
 
 
 @Dao

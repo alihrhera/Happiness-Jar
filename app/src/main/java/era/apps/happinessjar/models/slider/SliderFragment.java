@@ -1,4 +1,4 @@
-package era.apps.happinessjar.ui;
+package era.apps.happinessjar.models.slider;
 
 
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import era.apps.happinessjar.MainActivity;
 import era.apps.happinessjar.R;
-import era.apps.happinessjar.util.adapters.CustomPagerAdapter;
+import era.apps.happinessjar.models.slider.adapter.CustomPagerAdapter;
 
 
 public class SliderFragment extends Fragment {

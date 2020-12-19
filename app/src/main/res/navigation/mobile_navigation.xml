@@ -6,7 +6,7 @@
     app:startDestination="@id/NavSplashFragment">
     <fragment
         android:id="@+id/NavSplashFragment"
-        android:name="era.apps.happinessjar.ui.SplashFragment"
+        android:name="era.apps.happinessjar.models.SplashFragment"
         android:label="SplashFragment" >
 
         <action
@@ -30,24 +30,24 @@
     </fragment>
     <fragment
         android:id="@+id/navMessagesFragment"
-        android:name="era.apps.happinessjar.ui.message.MessagesFragment"
+        android:name="era.apps.happinessjar.models.message.MessagesFragment"
         android:label="fragment_stories"
         tools:layout="@layout/fragment_stories" />
     <fragment
         android:id="@+id/navAllLikedMessagesFragment"
-        android:name="era.apps.happinessjar.ui.message.AllLikedMessagesFragment"
+        android:name="era.apps.happinessjar.models.message.AllLikedMessagesFragment"
         android:label="AllLikedMessagesFragment" />
     <fragment
         android:id="@+id/navStoriesFragment"
-        android:name="era.apps.happinessjar.ui.stories.StoriesFragment"
+        android:name="era.apps.happinessjar.models.stories.StoriesFragment"
         android:label="StoriesFragment" />
     <fragment
         android:id="@+id/navWhatsAppMessagesFragment"
-        android:name="era.apps.happinessjar.ui.message.WhatsAppMessagesFragment"
+        android:name="era.apps.happinessjar.models.message.WhatsAppMessagesFragment"
         android:label="WhatsAppMessagesFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="era.apps.happinessjar.ui.SettingsFragment"
+        android:name="era.apps.happinessjar.models.SettingsFragment"
         android:label="SettingsFragment" >
         <action
             android:id="@+id/action_settingsFragment_to_sliderFragment"
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/sliderFragment"
-        android:name="era.apps.happinessjar.ui.SliderFragment"
+        android:name="era.apps.happinessjar.models.slider.SliderFragment"
         android:label="SliderFragment" >
         <action
             android:id="@+id/action_sliderFragment_to_navMessagesFragment"

@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import era.apps.happinessjar.databinding.ActivityMainBinding
-import era.apps.happinessjar.util.database.MessagesViewModel
+import era.apps.happinessjar.models.message.view_model.MessagesViewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -86,33 +86,17 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
-/*
-        object : Thread() {
-            override fun run() {
-                super.run()
-                try {
-                    sleep(200)
-                    runOnUiThread {
-                        bottomDefaultViewStatus(messages)
-                        attachFragment(R.id.navMessagesFragment)
-
-                    }
-                } catch (e: Exception) {
-                }
-            }
-        }.start()*/
-
-
     }
 
-
+    private var fragID = 0
     fun attachFragment(fragId: Int) {
-        navController.navigate(fragId)
-
+        if (fragID != fragId) {
+            navController.navigate(fragId)
+            fragID = fragId
+        }
     }
 
-    fun getViewModel(): MessagesViewModel {
+    fun getMessageViwModel(): MessagesViewModel {
         return messageViwModel
     }
 
