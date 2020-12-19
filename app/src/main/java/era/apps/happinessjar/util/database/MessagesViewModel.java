@@ -41,7 +41,9 @@ public class MessagesViewModel extends AndroidViewModel {
     }
 
     public void like(AppMessage message) {
+        message.setStatus(message.getStatus()==1?0:1);
         repository.updateMessage(message);
+
     }
 
 

@@ -1,7 +1,8 @@
 package era.apps.happinessjar.ui
 
-import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,27 +17,31 @@ class SplashFragment : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         (activity as MainActivity).hidActionBar()
-            object : Thread() {
-                override fun run() {
-                    super.run()
-                    try {
-                        sleep(1800)
+        (activity as MainActivity).hidBottom()
 
-                    } catch (e: Exception) {
-                    }
-                }
-            }.start()
+        val first =
+                activity?.getSharedPreferences("info", 0)?.getBoolean("firstTime", true)
+
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (first!!) {
+                (activity as MainActivity).attachFragment(R.id.sliderFragment)
+            }else {
+                (activity as MainActivity).attachFragment(R.id.navMessagesFragment)
+            }
+
+        }, 1000)
+
+
+
+
+
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
-
-
-
-
-
 
 
 }

@@ -22,4 +22,13 @@ public interface StoryDao {
     @Query("Select * from Story")
     LiveData<List<Story>>getAllStory();
 
+
+    @Query("SELECT COUNT('id') FROM Story")
+    int getCount();
+
+
+
+
+
+
 }

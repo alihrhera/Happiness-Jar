@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.message.MessagesFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:padding="@dimen/_5sdp"
+        tools:itemCount="10"
+        tools:listitem="@layout/row_one_message"
+        android:id="@+id/showAllMessage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

@@ -1,8 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.cardview.widget.CardView
+    android:layout_margin="@dimen/_5sdp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/_150sdp"
+    app:cardElevation="@dimen/_5sdp"
+    app:cardCornerRadius="@dimen/_15sdp"
+    android:id="@+id/parentCard"
+    app:cardBackgroundColor="@color/color5"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/_150sdp"
+        >
+
+        <TextView
+            android:text="test"
+            android:textColor="@color/colorBlack"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/messageContent"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/saveAsPhoto"
+            />
+
+        <ImageView
+            android:src="@drawable/ic_save"
+            app:layout_constraintEnd_toStartOf="@id/share"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/saveAsPhoto"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"/>
+        <ImageView
+            android:src="@drawable/ic_sharing"
+            app:layout_constraintEnd_toStartOf="@id/like"
+            app:layout_constraintStart_toEndOf="@id/saveAsPhoto"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/share"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"/>
+        <ImageView
+            android:src="@drawable/ic_like"
+            app:layout_constraintStart_toEndOf="@id/share"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/like"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

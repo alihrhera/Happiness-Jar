@@ -13,4 +13,20 @@
     <color name="color_profile_bg">#0D5FFF</color>
     <color name="white">#fff</color>
 
+    <color name="color0">#FDFDFD</color>
+    <color name="color1">#80E9FF39</color>
+    <color name="color2">#808CFF1F</color>
+    <color name="color3">#8000C6CC</color>
+    <color name="color4">#80F100AA</color>
+    <color name="color5">#806B23FB</color>
+    <color name="colorBlack">#000</color>
+
+
+
+
+
+
+
+
+
 </resources>

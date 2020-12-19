@@ -8,4 +8,20 @@
     <string name="fav">Favorite</string>
     <string name="settings">Settings</string>
     <string name="message">Message</string>
+
+    <string name="aboutApp">تطبيق برطمان السعاده هو تطبيق خيرى الهدف منه ادخال السعاده على قلب انسان ولو برساله  غير ربحى والارباح العائده من الاعلانات سيتم التبرع 50%  منها لاجل احد المستشفيات والجزء الاخر من اجل تشغيل التطبيق نفسه  ساعدنا بنشره</string>
+
+    <string name="updateData_btn">تحديث البيانات</string>
+    <string name="chatWithAdmin">"اترك رسالتك وهنرد عليك "</string>
+    <string name="enterChat">ادخل بياناتك لبداء المحادثه</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="name">الاسم</string>
+    <string name="startChat">ابداء الدردشه</string>
+
+    <string name="ratUs">قيمنا على جوجل بلاى</string>
+    <string name="we_have_widgs">التطبيق له ويدجات يمكن اضافتها فى الشاشه الرئيسيه بجوار الساعه لتظهر الرساله اماماك طوال اليوم </string>
+    <string name="findHowToAdd">كيف يمكن اضافاتها</string>
+    <string name="weLoveToHereFromYou">نحب ان نسمع لك اقتراحاتك او رسالتك  </string>
+
+
 </resources>

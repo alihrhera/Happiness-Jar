@@ -17,6 +17,7 @@ public   class AppMessage {
     private int status;        // the status of the single message is Liked or No
     private String type;       // we have 2 type of message whatsApp Message and the App Message
 
+
     public AppMessage(int status, String content, String type) {
         this.content = content;
         this.status = status;
@@ -44,6 +45,10 @@ public   class AppMessage {
 
     public String getType() {
         return type;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public boolean isLiked() {

@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_NavSplashFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_NavSplashFragment_to_sliderFragment"
+            app:destination="@id/sliderFragment" />
     </fragment>
     <fragment
         android:id="@+id/navMessagesFragment"
@@ -45,5 +48,17 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="era.apps.happinessjar.ui.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_sliderFragment"
+            app:destination="@id/sliderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sliderFragment"
+        android:name="era.apps.happinessjar.ui.SliderFragment"
+        android:label="SliderFragment" >
+        <action
+            android:id="@+id/action_sliderFragment_to_navMessagesFragment"
+            app:destination="@id/navMessagesFragment" />
+    </fragment>
 </navigation>

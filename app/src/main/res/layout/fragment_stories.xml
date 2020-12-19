@@ -7,10 +7,11 @@
 
     tools:context=".ui.message.MessagesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+        android:id="@+id/showAllStories"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+
+        />
 
 </FrameLayout>

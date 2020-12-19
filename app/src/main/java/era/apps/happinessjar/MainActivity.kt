@@ -6,7 +6,6 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginBottom
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -23,6 +22,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var messageViwModel: MessagesViewModel
 
+    fun showBottom() {
+        binding.bLay.parentView.visibility = View.VISIBLE
+    }
+
+    fun hidBottom() {
+        binding.bLay.parentView.visibility = View.GONE
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -35,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager.findFragmentById(R.id.mainFragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
         container = findViewById(R.id.container)
+
         val setting = findViewById<RelativeLayout>(R.id.bottom_settings)
         val stories = findViewById<RelativeLayout>(R.id.bottom_stories)
         val like = findViewById<RelativeLayout>(R.id.bottom_like)
@@ -78,20 +87,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-        object :Thread(){
+/*
+        object : Thread() {
             override fun run() {
                 super.run()
                 try {
                     sleep(200)
-                    runOnUiThread{
+                    runOnUiThread {
                         bottomDefaultViewStatus(messages)
-                            attachFragment(R.id.navMessagesFragment)
+                        attachFragment(R.id.navMessagesFragment)
 
                     }
-                }catch (e:Exception){}
+                } catch (e: Exception) {
+                }
             }
-        }.start()
+        }.start()*/
+
+
     }
 
 
@@ -118,20 +130,19 @@ class MainActivity : AppCompatActivity() {
     private fun bottomDefaultViewStatus(view: RelativeLayout) {
         if (crId != view.id) {
             val h = view.height
-            val w = view.height
             var pram = LinearLayout.LayoutParams(0, h)
             for (index in 0 until (container).childCount) {
                 val nextChild: RelativeLayout = ((container).getChildAt(index) as RelativeLayout)
                 nextChild.setPadding(0, 0, 0, 0)
-                pram.weight=1f
+                pram.weight = 1f
                 nextChild.layoutParams = pram
             }
             pram = LinearLayout.LayoutParams(0, view.height - 10)
             view.setPadding(0, 0, 0, 5)
             view.elevation = 10f
-            pram.weight=1f
+            pram.weight = 1f
             view.layoutParams = pram
-            crId=view.id
+            crId = view.id
         }
 
     }
