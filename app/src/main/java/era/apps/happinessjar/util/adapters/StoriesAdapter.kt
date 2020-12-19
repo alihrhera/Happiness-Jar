@@ -60,7 +60,7 @@ class StoriesAdapter : ListAdapter<Story, StoriesAdapter.StoriesViewHolder>(Slee
 
             storyTitle.text = item.title
             if (item.photoLink.length > 10) {
-                Picasso.get().load(item.photoLink).centerCrop().fit().into(storyImage)
+                Picasso.get().load(item.photoLink.replace(" ","")).centerCrop().fit().into(storyImage)
                 return
             }
             Picasso.get().load(R.drawable.story).centerCrop().fit().into(storyImage)

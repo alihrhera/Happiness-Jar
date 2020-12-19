@@ -8,6 +8,7 @@
     tools:context=".ui.message.MessagesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/openGray"
         android:layout_width="match_parent"
         android:id="@+id/showAllStories"
         android:layout_height="match_parent"
