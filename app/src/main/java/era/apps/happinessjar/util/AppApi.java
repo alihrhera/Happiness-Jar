@@ -1,4 +1,4 @@
-package era.apps.happinessjar.models.stories.view_model;
+package era.apps.happinessjar.util;
 
 import android.util.Log;
 
@@ -6,6 +6,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.ParsedRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
 
 import java.util.List;
 
@@ -44,6 +45,27 @@ public class AppApi {
                     @Override
                     public void onError(ANError anError) {
                         Log.e("Error While",anError.getMessage().toString());
+                    }
+                });
+
+    }
+
+    public void  notifyUserThereIsNewMessage(OnListLoad onListLoad,String fcm,String message){
+        AndroidNetworking.post(URL+"happiness_jar/notifyUserThereIsNewMessage.php")
+                .setTag(this)
+                .setPriority(Priority.HIGH)
+                .addBodyParameter("fcm",fcm)
+                .addBodyParameter("message",message)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
                     }
                 });
 

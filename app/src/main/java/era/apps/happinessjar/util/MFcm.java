@@ -12,7 +12,11 @@ import org.jetbrains.annotations.NotNull;
 public class MFcm extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(@NotNull RemoteMessage remoteMessage) {
+        if (remoteMessage.getData().get("type").contains("ChatMessage")){
+            if (!DataManger.getInstance().isChatOpen()){
 
+            }
+        }
 
 
 
@@ -25,6 +29,7 @@ public class MFcm extends FirebaseMessagingService {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("DeviceTokens");
         myRef.child(s).setValue(s);
+        getSharedPreferences("info", 0).edit().putString("fcm",s).apply();
 
     }
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import era.apps.happinessjar.models.stories.data_base.Story;
+import era.apps.happinessjar.util.callback.OnItemClick;
 
 public class DataManger {
 
@@ -25,6 +26,28 @@ public class DataManger {
                 context.getPackageName();
     }
 
+    OnItemClick appStatues;
+
+    public void setAppStatues(OnItemClick appStatues) {
+        this.appStatues = appStatues;
+    }
+
+    public void loading() {
+        appStatues.OnClick(true);
+    }
+
+    public void normal() {
+        appStatues.OnClick(false);
+    }
 
 
+    private boolean isChatOpen = false;
+
+    public boolean isChatOpen() {
+        return isChatOpen;
+    }
+
+    public void setChatOpen(boolean chatOpen) {
+        isChatOpen = chatOpen;
+    }
 }

@@ -64,7 +64,7 @@
         android:text="@string/startChat"
         android:textColor="#fff"
         android:textSize="18sp"
-        android:id="@+id/startCaht"
+        android:id="@+id/startChat"
         android:layout_marginBottom="@dimen/_10sdp"
         />
 

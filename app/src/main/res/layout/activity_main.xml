@@ -28,5 +28,27 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         layout="@layout/bottom_view"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loading"
+        android:background="@color/openTrans"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            app:cardElevation="@dimen/_30sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp">
+        <ProgressBar
+            android:layout_gravity="center"
+            android:indeterminate="false"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="match_parent"/>
 
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

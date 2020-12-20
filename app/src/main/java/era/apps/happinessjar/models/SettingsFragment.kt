@@ -1,9 +1,11 @@
 package era.apps.happinessjar.models
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,22 +18,25 @@ import era.apps.happinessjar.util.DataManger
 
 class SettingsFragment : Fragment() {
 
-
+    lateinit var mContext: Context
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        mContext = requireActivity()
+        iniDialog()
+
         (activity as MainActivity).hidActionBar()
         val root = inflater.inflate(R.layout.fragment_settings, container, false)
         root.findViewById<View>(R.id.chatWithUs).setOnClickListener {
             showRegisterDialog()
         }
 
-        root.findViewById<View>(R.id.ratUsOnPlay).setOnClickListener{
+        root.findViewById<View>(R.id.ratUsOnPlay).setOnClickListener {
             ratUs()
         }
 
-        root.findViewById<View>(R.id.howToAddWidgs).setOnClickListener{
+        root.findViewById<View>(R.id.howToAddWidgs).setOnClickListener {
             (activity as MainActivity).attachFragment(R.id.sliderFragment)
         }
 
@@ -42,43 +47,22 @@ class SettingsFragment : Fragment() {
         return root
     }
 
+    lateinit var dialog: Dialog
     private fun showRegisterDialog() {
-        val isReg = requireActivity().getSharedPreferences("msg", 0).getBoolean("reg", false)
+        val isReg = mContext
+                .getSharedPreferences("info", 0).getBoolean("reg", false)
         if (!isReg) {
-            object : Dialog(requireContext()) {
-                override fun onCreate(savedInstanceState: Bundle) {
-                    super.onCreate(savedInstanceState)
-                    //val width = (activity!!.resources.displayMetrics.widthPixels * 0.90).toInt()
-                    if (window == null) {
-                        return
-                    }
-                    // getWindow().setBackgroundDrawableResource(R.color.transparent);
-                    // getWindow().setLayout(width, ViewGroup.LayoutParams.MATCH_PARENT);
-                    setContentView(R.layout.dialog_get_info)
-                    val getPhone = findViewById<EditText>(R.id.getPhone)
-                    val getName = findViewById<EditText>(R.id.getName)
-                    findViewById<View>(R.id.startCaht).setOnClickListener {
-                        if (getPhone.text.length <= 10) {
-                            getPhone.error = "مطلوب"
-                        }
-                        if (getName.text.length <= 1) {
-                            getName.error = "مطلوب"
-                        }
-                        activity!!.getSharedPreferences("msg", 0).edit().putString("chatId", getPhone.text.toString()).apply()
-                        activity!!.getSharedPreferences("msg", 0).edit().putString("chatName", getName.text.toString()).apply()
-                        activity!!.getSharedPreferences("msg", 0).edit().putBoolean("reg", true).apply()
-                       // activity.attachFragment(ChatFragment())
-
-                        dismiss()
-                    }
-                }
-            }.show()
+            try {
+                dialog.show()
+            } catch (e: Exception) {
+                Log.e("Ex", e.message + " " + e.cause + " " + e.localizedMessage + " " + (dialog == null))
+            }
             return
         }
-       // activity.attachFragment(ChatFragment())
+        (activity as MainActivity).attachFragment(R.id.chatFragment)
     }
 
-    private fun ratUs(){
+    private fun ratUs() {
         try {
             val url: String = DataManger.getInstance().getGooglePlayAppUrl(requireContext())
             val googlePlayIntent = Intent(Intent.ACTION_VIEW)
@@ -91,4 +75,39 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    private fun iniDialog() {
+        dialog = object : Dialog(mContext) {
+            override fun onCreate(savedInstanceState: Bundle?) {
+                super.onCreate(savedInstanceState)
+                try {
+                    setContentView(R.layout.dialog_get_info)
+                    val width = (activity!!.resources.displayMetrics.widthPixels * 0.90).toInt()
+//                    if (window == null) {
+//                        return
+//                    }
+//                    // getWindow().setBackgroundDrawableResource(R.color.transparent);
+                    window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    val getPhone = findViewById<EditText>(R.id.getPhone)
+                    val getName = findViewById<EditText>(R.id.getName)
+                    findViewById<View>(R.id.startChat).setOnClickListener {
+                        if (getPhone.text.length <= 10) {
+                            getPhone.error = "مطلوب"
+                        }
+                        if (getName.text.length <= 1) {
+                            getName.error = "مطلوب"
+                        }
+                        context.getSharedPreferences("info", 0).edit().putString("chatId", getPhone.text.toString()).apply()
+                        context.getSharedPreferences("info", 0).edit().putString("chatName", getName.text.toString()).apply()
+                        context.getSharedPreferences("info", 0).edit().putBoolean("reg", true).apply()
+                        (activity as MainActivity).attachFragment(R.id.chatFragment)
+                        dismiss()
+                    }
+
+                } catch (e: Exception) {
+                    Log.e("FromInsid", e.message + " " + e.cause + " " + e.localizedMessage + " " + (dialog == null))
+
+                }
+            }
+        }
+    }
 }

@@ -6,33 +6,31 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.List;
 
-import era.apps.happinessjar.models.message.data_base.AppMessage;
 
 public class ChatViewModel extends AndroidViewModel {
+    private final ChatMessageRepository repository;
 
     public ChatViewModel(@NonNull Application application) {
         super(application);
-        ChatMessageRepository repository=new ChatMessageRepository("");
-
+        String id = application.getSharedPreferences("info", 0).getString("chatId", "");
+        repository = ChatMessageRepository.getInstance(id);
+        allChatMessage = repository.getChatMessage();
     }
 
-    private void sendMsg(Conversation conversation) {
+    private final LiveData<Conversation> allChatMessage;
 
+    public LiveData<Conversation> getAllChatMessage() {
+        return allChatMessage;
     }
-    private OnMessageSent onMessageSent;
-    private LiveData<List<ChatMessages>> allChatMessage;
 
+    public void setOnMessageSent(OnMessageSent onMessageSent) {
+        repository.setOnMessageSent(onMessageSent);
+    }
 
-
-
-
-
-
-
+    public void sendMessage(Conversation conversation) {
+        repository.sendMessage(conversation);
+    }
 
 }

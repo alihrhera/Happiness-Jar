@@ -19,12 +19,11 @@ import era.apps.happinessjar.R;
 import era.apps.happinessjar.models.chat.model.ChatMessages;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
-    String id="01061407134";
+    String id;
     public ChatAdapter(String id){
         this.id=id;
     }
-    public ChatAdapter(){
-    }
+
 
     private List<ChatMessages> dataList = new ArrayList<>();
 
@@ -53,9 +52,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         Date date=new Date(messages.getTime());
         Calendar c=Calendar.getInstance();
         c.setTime(date);
-         String  stime= android.text.format.DateFormat.format("yyyy-MM-dd   hh:mm a", date).toString();
+         String  sTime= android.text.format.DateFormat.format("yyyy-MM-dd   hh:mm a", date).toString();
        // String time=date.toString()+"    " +c.get(Calendar.HOUR)+":"+c.get(Calendar.MINUTE);
-        holder.time.setText(stime);
+        holder.time.setText(sTime);
     }
 
     @Override

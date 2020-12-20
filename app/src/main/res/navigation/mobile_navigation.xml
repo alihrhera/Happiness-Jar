@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_NavSplashFragment_to_sliderFragment"
             app:destination="@id/sliderFragment" />
+        <action
+            android:id="@+id/action_NavSplashFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/navMessagesFragment"
@@ -61,4 +64,8 @@
             android:id="@+id/action_sliderFragment_to_navMessagesFragment"
             app:destination="@id/navMessagesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="era.apps.happinessjar.models.chat.ChatFragment"
+        android:label="ChatFragment" />
 </navigation>

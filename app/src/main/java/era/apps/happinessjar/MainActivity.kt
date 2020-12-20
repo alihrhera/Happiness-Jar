@@ -11,6 +11,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import era.apps.happinessjar.databinding.ActivityMainBinding
 import era.apps.happinessjar.models.message.view_model.MessagesViewModel
+import era.apps.happinessjar.util.DataManger
+import era.apps.happinessjar.util.callback.OnItemClick
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        DataManger.getInstance().setAppStatues(status)
+        DataManger.getInstance().normal()
         messageViwModel = ViewModelProvider(this).get(MessagesViewModel::class.java)
         if (supportActionBar != null) {
             acBar = supportActionBar!!
@@ -132,4 +136,24 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    val status = object : OnItemClick {
+        override fun OnClick(item: Any?) {
+            if (item as Boolean) {
+                binding.loading.visibility = View.VISIBLE
+
+                return
+            }
+            binding.loading.visibility = View.GONE
+
+
+        }
+    }
+
+    override fun onBackPressed() {
+        if (binding.loading.visibility == View.VISIBLE) {
+            binding.loading.visibility = View.GONE
+            return
+        }
+        super.onBackPressed()
+    }
 }
