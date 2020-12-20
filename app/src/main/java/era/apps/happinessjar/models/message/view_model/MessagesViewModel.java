@@ -21,7 +21,6 @@ public class MessagesViewModel extends AndroidViewModel {
     public MessagesViewModel(@NonNull Application application) {
         super(application);
         repository = new MessageRepository(application);
-
         allAppMessage   = repository.getAllAppMessage();
         allAppWhatsApp  = repository.getAllAppWhatsApp();
         allLikesMessage = repository.getAllLikesMessage();

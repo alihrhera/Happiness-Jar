@@ -28,16 +28,7 @@ class SettingsFragment : Fragment() {
         }
 
         root.findViewById<View>(R.id.ratUsOnPlay).setOnClickListener{
-            try {
-                val url: String = DataManger.getInstance().getGooglePlayAppUrl(requireContext())
-                val googlePlayIntent = Intent(Intent.ACTION_VIEW)
-                googlePlayIntent.data = Uri.parse(url)
-                startActivity(googlePlayIntent)
-            } catch (e: Exception) {
-                val url: String = DataManger.getInstance().getGooglePlayAppUrl(requireContext())
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                startActivity(browserIntent)
-            }
+            ratUs()
         }
 
         root.findViewById<View>(R.id.howToAddWidgs).setOnClickListener{
@@ -87,5 +78,17 @@ class SettingsFragment : Fragment() {
        // activity.attachFragment(ChatFragment())
     }
 
+    private fun ratUs(){
+        try {
+            val url: String = DataManger.getInstance().getGooglePlayAppUrl(requireContext())
+            val googlePlayIntent = Intent(Intent.ACTION_VIEW)
+            googlePlayIntent.data = Uri.parse(url)
+            startActivity(googlePlayIntent)
+        } catch (e: Exception) {
+            val url: String = DataManger.getInstance().getGooglePlayAppUrl(requireContext())
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(browserIntent)
+        }
+    }
 
 }
