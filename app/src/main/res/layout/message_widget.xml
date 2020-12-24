@@ -1,0 +1,25 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_220sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/back_ground"
+    android:padding="@dimen/widget_margin"
+    android:elevation="@dimen/_5sdp"
+    android:layout_margin="@dimen/_5sdp"
+    android:theme="@style/ThemeOverlay.HappinessJar.AppWidgetContainer">
+    <TextView
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/aboutApp"
+        android:id="@+id/appwidget_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="8dp"
+        android:contentDescription="@string/appwidget_text"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+</RelativeLayout>

@@ -32,5 +32,7 @@ public class ChatViewModel extends AndroidViewModel {
     public void sendMessage(Conversation conversation) {
         repository.sendMessage(conversation);
     }
-
+    public void update(Conversation conversation) {
+        repository.updateMessage(conversation);
+    }
 }

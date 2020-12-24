@@ -33,28 +33,34 @@
             />
 
         <ImageView
+            android:layout_marginStart="@dimen/_25sdp"
+            android:padding="@dimen/_3sdp"
             android:src="@drawable/ic_save"
             app:layout_constraintEnd_toStartOf="@id/share"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_7sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/saveAsPhoto"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"/>
         <ImageView
+            android:padding="@dimen/_3sdp"
+
             android:src="@drawable/ic_sharing"
             app:layout_constraintEnd_toStartOf="@id/like"
             app:layout_constraintStart_toEndOf="@id/saveAsPhoto"
-            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_7sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/share"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"/>
         <ImageView
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:padding="@dimen/_3sdp"
             android:src="@drawable/ic_like"
             app:layout_constraintStart_toEndOf="@id/share"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_7sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/like"
             android:layout_width="@dimen/_35sdp"

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_marginStart="@dimen/_5sdp"
-    android:layout_marginEnd="@dimen/_30sdp"
+    android:paddingEnd="@dimen/_35sdp"
     android:layout_marginTop="@dimen/_5sdp"
     android:layout_marginBottom="@dimen/_5sdp"
     android:paddingTop="@dimen/_2sdp"
@@ -20,12 +20,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:textSize="@dimen/_14sdp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:id="@+id/masge"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:textSize="11sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+
             android:paddingEnd="@dimen/_5sdp"
             android:paddingStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_5sdp"
@@ -34,6 +37,14 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <ImageView
+            android:visibility="gone"
+            android:src="@drawable/ic_check"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/isRead"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

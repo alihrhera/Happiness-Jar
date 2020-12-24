@@ -50,21 +50,23 @@ public class AppApi {
 
     }
 
-    public void  notifyUserThereIsNewMessage(OnListLoad onListLoad,String fcm,String message){
+    public void  notifyUserThereIsNewMessage(String fcm,String message,String type){
         AndroidNetworking.post(URL+"happiness_jar/notifyUserThereIsNewMessage.php")
                 .setTag(this)
                 .setPriority(Priority.HIGH)
                 .addBodyParameter("fcm",fcm)
                 .addBodyParameter("message",message)
+                .addBodyParameter("type",type)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-
+                    Log.e("TsetResponse",response);
                     }
 
                     @Override
                     public void onError(ANError anError) {
+                        Log.e("TsetResponse","Error -> "+anError.getMessage());
 
                     }
                 });

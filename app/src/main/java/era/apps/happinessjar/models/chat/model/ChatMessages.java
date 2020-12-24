@@ -5,10 +5,19 @@ import com.google.firebase.database.Exclude;
 import java.util.Date;
 
 public class ChatMessages {
-    String senderId;
-    String id;
-    String messages="";
-    long time;
+    private String senderId;
+    private String id;
+    private String messages="";
+    private long time;
+    private boolean read;
+
+    public boolean isRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
+    }
 
     @Exclude
     public Date getTimeToSort(){

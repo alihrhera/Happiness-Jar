@@ -19,9 +19,10 @@ import era.apps.happinessjar.R;
 import era.apps.happinessjar.models.chat.model.ChatMessages;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
-    String id;
-    public ChatAdapter(String id){
-        this.id=id;
+    private final String id;
+
+    public ChatAdapter(String id) {
+        this.id = id;
     }
 
 
@@ -49,12 +50,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ChatMessages messages = dataList.get(position);
         holder.msg.setText(messages.getMessages());
-        Date date=new Date(messages.getTime());
-        Calendar c=Calendar.getInstance();
+        Date date = new Date(messages.getTime());
+        Calendar c = Calendar.getInstance();
         c.setTime(date);
-         String  sTime= android.text.format.DateFormat.format("yyyy-MM-dd   hh:mm a", date).toString();
-       // String time=date.toString()+"    " +c.get(Calendar.HOUR)+":"+c.get(Calendar.MINUTE);
+        String sTime = android.text.format.DateFormat.format("yyyy-MM-dd   hh:mm a", date).toString();
+        // String time=date.toString()+"    " +c.get(Calendar.HOUR)+":"+c.get(Calendar.MINUTE);
         holder.time.setText(sTime);
+        holder.isRead.setVisibility(View.GONE);
+        if (getItemViewType(position) == 1 && messages.isRead()) {
+            holder.isRead.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -77,11 +82,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
 
         TextView msg;//, textNum;
         TextView time;//, textNum;
+        View isRead;//, textNum;
 
         MyViewHolder(@NonNull View view) {
             super(view);
             msg = view.findViewById(R.id.masge);
             time = view.findViewById(R.id.time);
+            isRead = view.findViewById(R.id.isRead);
         }
 
     }

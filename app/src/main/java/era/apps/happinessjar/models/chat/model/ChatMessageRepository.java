@@ -17,6 +17,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import era.apps.happinessjar.util.AppApi;
+
 public class ChatMessageRepository {
     private boolean isUser = false;
 
@@ -31,7 +33,8 @@ public class ChatMessageRepository {
                     try {
                         Conversation m = snapshot.getValue(Conversation.class);
                         listMutableLiveData.postValue(m);
-                    } catch (Exception e) {
+
+                    } catch (Exception ignored) {
                     }
                     return;
                 }
@@ -69,7 +72,10 @@ public class ChatMessageRepository {
             map.put("list", conversation.list);
             reference.updateChildren(map).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
+                    AppApi.getInstance().notifyUserThereIsNewMessage(conversation.fcmToken
+                            ,conversation.getList().get(conversation.list.size()-1).getMessages(),"ChatMessage");
                     if (onMessageSent != null) {
+
                         onMessageSent.OnSent();
                     }
                 }
@@ -82,6 +88,21 @@ public class ChatMessageRepository {
             }
         });
         // COMPLETED (2)  ADD NEW CON
+    }
+
+    void updateMessage(Conversation conversation) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("list", conversation.getList());
+            reference.updateChildren(map).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    AppApi.getInstance().notifyUserThereIsNewMessage(conversation.fcmToken
+                            ,conversation.getList().get(conversation.list.size()-1).getMessages(),"ChatMessage");
+                    if (onMessageSent != null) {
+
+                        onMessageSent.OnSent();
+                    }
+                }
+            });
     }
 
     private final MutableLiveData<Conversation> listMutableLiveData = new MutableLiveData<>();

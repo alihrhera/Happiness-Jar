@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import era.apps.happinessjar.R
 import era.apps.happinessjar.util.callback.OnItemClick
 import era.apps.happinessjar.models.message.data_base.AppMessage
@@ -127,6 +128,11 @@ class MessagesAdapter : ListAdapter<AppMessage, MessagesAdapter.MessagesHolder>(
 
         fun bind(item: AppMessage) {
             messageContent.text = item.content
+            like.setImageResource(R.drawable.ic_not_like)
+            if (item.isLiked){
+                like.setImageResource(R.drawable.ic_like)
+
+            }
         }
 
         companion object {

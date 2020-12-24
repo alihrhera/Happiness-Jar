@@ -5,7 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
 
 
-
     <color name="color_home_bg">#9A979C</color>
     <color name="color_favorite_bg">#444145</color>
     <color name="color_chat_bg">#21FF06</color>
@@ -22,13 +21,11 @@
     <color name="colorBlack">#000</color>
     <color name="openGray">#DFF8F8</color>
     <color name="openTrans">#31949797</color>
-
-
-
-
-
-
-
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="gray">#9F9D9D</color>
 
 
 </resources>

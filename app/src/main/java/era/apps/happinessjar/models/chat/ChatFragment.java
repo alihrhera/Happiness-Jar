@@ -34,7 +34,8 @@ public class ChatFragment extends Fragment {
     private String myId;
     private ChatViewModel model;
     private Conversation con;
-
+    private String fcm;
+    private boolean isFirstLock=true;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +47,9 @@ public class ChatFragment extends Fragment {
         assert context != null;
         myId = context.getSharedPreferences("info", 0)
                 .getString("chatId", "");
+         fcm = context.getSharedPreferences("info", 0)
+                .getString("fcm", "");
+
         String name = context.getSharedPreferences("info", 0)
                 .getString("chatName", "");
         DataManger.getInstance().loading();
@@ -61,12 +65,31 @@ public class ChatFragment extends Fragment {
             if (conversation != null) {
                 con = conversation;
                 adapter.setDataList(con.getList());
+                if (isFirstLock){
+                    int i=0;
+                    for (ChatMessages m:con.getList()){
+                        i=i+1;
+                        if (!m.getSenderId().equals(myId) &&!m.isRead()){
+                            break;
+                        }
+
+                    }
+                    allChat.scrollToPosition(i);
+                    isFirstLock=false;
+                    for (ChatMessages m:con.getList()){
+                        if (!m.getSenderId().equals(myId) ){
+                            m.setRead(true);
+                        }
+
+                    }
+                    model.update(con);
+                }
                 return;
             }
             con = new Conversation();
             con.setName(name);
             con.setId(myId);
-
+            con.setFcmToken(fcm);
         });
 
         root.findViewById(R.id.sendMsg).setOnClickListener(v -> {
@@ -96,14 +119,13 @@ public class ChatFragment extends Fragment {
         }
         conversation.getList().add(oneMessage);
         conversation.setLastTimeSend(oneMessage.getTime());
+        conversation.setFcmToken(fcm);
         model.sendMessage(conversation);//sendMsg(con);
     }
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         DataManger.getInstance().setChatOpen(false);
-
     }
+
 }

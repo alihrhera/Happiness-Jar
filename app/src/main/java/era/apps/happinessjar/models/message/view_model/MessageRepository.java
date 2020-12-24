@@ -12,7 +12,7 @@ import era.apps.happinessjar.models.message.data_base.MessageDao;
 import era.apps.happinessjar.models.message.data_base.AppMessage;
 import era.apps.happinessjar.models.message.data_base.MessageDataBaseHelper;
 
-class MessageRepository {
+public class MessageRepository {
     /*
     * MessageRepository.class will control all opp of data base
     * here will check if data base are updated will show from room data base
@@ -48,7 +48,7 @@ class MessageRepository {
 
 
 
-    private void Insert(AppMessage message) {
+    public void insertToDataBase(AppMessage message) {
         new MessageOpp(messageDao).execute(message);
     }
     public void updateMessage(AppMessage appMessage) {
@@ -75,7 +75,7 @@ class MessageRepository {
 
         @Override
         protected Void doInBackground(AppMessage... appMessages) {
-            if (!insert) {
+            if (insert) {
                 messageDao.insert(appMessages[0]);
                 return null;
             }

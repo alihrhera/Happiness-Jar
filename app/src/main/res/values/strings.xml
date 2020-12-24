@@ -1,14 +1,12 @@
 <resources>
-    <string name="app_name">Happiness Jar</string>
+    <string name="app_name">برطمان السعاده</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
-    <string name="stories">Stories</string>
-    <string name="whatsApp">Whats App</string>
-    <string name="fav">Favorite</string>
-    <string name="settings">Settings</string>
-    <string name="message">Message</string>
-
+    <string name="stories">قصص</string>
+    <string name="whatsApp">حالات </string>
+    <string name="fav">مفضله</string>
+    <string name="settings">اعدادات</string>
+    <string name="message">رسائل</string>
     <string name="aboutApp">تطبيق برطمان السعاده هو تطبيق خيرى الهدف منه ادخال السعاده على قلب انسان ولو برساله  غير ربحى والارباح العائده من الاعلانات سيتم التبرع 50%  منها لاجل احد المستشفيات والجزء الاخر من اجل تشغيل التطبيق نفسه  ساعدنا بنشره</string>
 
     <string name="updateData_btn">تحديث البيانات</string>
@@ -23,6 +21,8 @@
     <string name="findHowToAdd">كيف يمكن اضافاتها</string>
     <string name="weLoveToHereFromYou">نحب ان نسمع لك اقتراحاتك او رسالتك  </string>
     <string name="writ_message">نحب ان نسمع لك اقتراحاتك او رسالتك  </string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 
 </resources>

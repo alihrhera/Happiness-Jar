@@ -9,8 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import era.apps.happinessjar.databinding.ActivityMainBinding
 import era.apps.happinessjar.models.message.view_model.MessagesViewModel
+import era.apps.happinessjar.util.AppApi
 import era.apps.happinessjar.util.DataManger
 import era.apps.happinessjar.util.callback.OnItemClick
 
@@ -43,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         if (supportActionBar != null) {
             acBar = supportActionBar!!
         }
+
         val navHostFragment =
                 supportFragmentManager.findFragmentById(R.id.mainFragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
@@ -90,6 +96,30 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+        val fcm = getSharedPreferences("info", 0)
+                .getString("fcm", "").toString()
+        val myRef = FirebaseDatabase.getInstance().getReference("DeviceTokens/$fcm")
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    return
+                }
+                myRef.child(fcm).setValue(fcm)
+                AppApi.getInstance()
+                        .notifyUserThereIsNewMessage(fcm, "ربنا معاك وبيجبر بخاطرك ديما و بيحبك ف تفائل ❤️", "message")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+        if (intent.action != null) {
+            val type = intent.action.toString()
+            if (type.contains("chat")) {
+                attachFragment(R.id.chatFragment)
+            } else if (type.contains("message")) {
+                attachFragment(R.id.navMessagesFragment)
+            }
+        }
     }
 
     private var fragID = 0
@@ -104,17 +134,17 @@ class MainActivity : AppCompatActivity() {
         return messageViwModel
     }
 
-
+    /*
     fun showActionBar() {
         acBar.show()
     }
-
+    */
     fun hidActionBar() {
-        acBar.hide()
+        this.acBar.hide()
     }
 
     private lateinit var container: LinearLayout
-    var crId = 0
+    private var crId = 0
     private fun bottomDefaultViewStatus(view: RelativeLayout) {
         if (crId != view.id) {
             val h = view.height
@@ -136,7 +166,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    val status = object : OnItemClick {
+    private val status = object : OnItemClick {
         override fun OnClick(item: Any?) {
             if (item as Boolean) {
                 binding.loading.visibility = View.VISIBLE
@@ -156,4 +186,5 @@ class MainActivity : AppCompatActivity() {
         }
         super.onBackPressed()
     }
+
 }

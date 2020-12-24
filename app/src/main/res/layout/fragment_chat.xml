@@ -48,7 +48,7 @@
                     android:background="@null"
                     android:hint="@string/writ_message"
                     android:importantForAutofill="no"
-                    android:inputType="text"
+                    android:inputType="textMultiLine|textImeMultiLine"
                     android:maxHeight="@dimen/_120sdp"
                     android:minHeight="@dimen/_40sdp"
                     android:paddingStart="@dimen/_10sdp"
