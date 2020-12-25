@@ -1,4 +1,4 @@
-package era.apps.happinessjar.ui.view
+package era.apps.happinessjar.ui.view.masseges
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
