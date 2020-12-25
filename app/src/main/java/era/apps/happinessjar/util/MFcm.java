@@ -12,8 +12,10 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import org.jetbrains.annotations.NotNull;
 
-import era.apps.happinessjar.models.message.data_base.AppMessage;
-import era.apps.happinessjar.models.message.view_model.MessageRepository;
+import era.apps.happinessjar.data.models.AppMessage;
+import era.apps.happinessjar.data.networking.AppApi;
+import era.apps.happinessjar.data.repository.MessageRepository;
+import era.apps.happinessjar.ui.view.MessageWidget;
 
 public class MFcm extends FirebaseMessagingService {
     @Override

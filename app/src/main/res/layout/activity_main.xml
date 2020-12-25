@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
 
-    tools:context=".MainActivity">
+    tools:context=".ui.view.MainActivity">
 
     <fragment
         android:background="@color/white"

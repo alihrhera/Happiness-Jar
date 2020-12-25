@@ -9,7 +9,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
-import era.apps.happinessjar.MainActivity;
+import era.apps.happinessjar.ui.view.MainActivity;
 import era.apps.happinessjar.R;
 
 class NotificationClass {

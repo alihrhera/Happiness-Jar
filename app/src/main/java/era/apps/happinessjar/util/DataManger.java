@@ -2,10 +2,6 @@ package era.apps.happinessjar.util;
 
 import android.content.Context;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import era.apps.happinessjar.models.stories.data_base.Story;
 import era.apps.happinessjar.util.callback.OnItemClick;
 
 public class DataManger {

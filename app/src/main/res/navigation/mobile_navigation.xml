@@ -6,7 +6,7 @@
     app:startDestination="@id/NavSplashFragment">
     <fragment
         android:id="@+id/NavSplashFragment"
-        android:name="era.apps.happinessjar.models.SplashFragment"
+        android:name="era.apps.happinessjar.ui.view.SplashFragment"
         android:label="SplashFragment" >
 
         <action
@@ -33,24 +33,24 @@
     </fragment>
     <fragment
         android:id="@+id/navMessagesFragment"
-        android:name="era.apps.happinessjar.models.message.MessagesFragment"
+        android:name="era.apps.happinessjar.ui.view.masseges.MessagesFragment"
         android:label="fragment_stories"
         tools:layout="@layout/fragment_stories" />
     <fragment
         android:id="@+id/navAllLikedMessagesFragment"
-        android:name="era.apps.happinessjar.models.message.AllLikedMessagesFragment"
+        android:name="era.apps.happinessjar.ui.view.masseges.AllLikedMessagesFragment"
         android:label="AllLikedMessagesFragment" />
     <fragment
         android:id="@+id/navStoriesFragment"
-        android:name="era.apps.happinessjar.models.stories.StoriesFragment"
+        android:name="era.apps.happinessjar.ui.view.StoriesFragment"
         android:label="StoriesFragment" />
     <fragment
         android:id="@+id/navWhatsAppMessagesFragment"
-        android:name="era.apps.happinessjar.models.message.WhatsAppMessagesFragment"
+        android:name="era.apps.happinessjar.ui.view.masseges.WhatsAppMessagesFragment"
         android:label="WhatsAppMessagesFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="era.apps.happinessjar.models.SettingsFragment"
+        android:name="era.apps.happinessjar.ui.view.SettingsFragment"
         android:label="SettingsFragment" >
         <action
             android:id="@+id/action_settingsFragment_to_sliderFragment"
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/sliderFragment"
-        android:name="era.apps.happinessjar.models.slider.SliderFragment"
+        android:name="era.apps.happinessjar.ui.view.SliderFragment"
         android:label="SliderFragment" >
         <action
             android:id="@+id/action_sliderFragment_to_navMessagesFragment"
@@ -66,6 +66,6 @@
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
-        android:name="era.apps.happinessjar.models.chat.ChatFragment"
+        android:name="era.apps.happinessjar.ui.view.ChatFragment"
         android:label="ChatFragment" />
 </navigation>

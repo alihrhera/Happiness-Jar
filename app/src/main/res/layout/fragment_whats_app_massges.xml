@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
 
-    tools:context=".models.message.MessagesFragment">
+    tools:context=".ui.view.masseges.MessagesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/showAllWhatsAppMessage"
