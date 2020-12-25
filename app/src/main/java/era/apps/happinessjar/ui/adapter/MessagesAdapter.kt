@@ -60,15 +60,15 @@ class MessagesAdapter : ListAdapter<AppMessage, MessagesAdapter.MessagesHolder>(
         val item = messageList[position]
         holder.bind(item)
         holder.like.setOnClickListener {
-            onLike.OnClick(item)
+            onLike.onClick(item)
 
         }
         holder.save.setOnClickListener {
-            onSave.OnClick(item)
+            onSave.onClick(item)
 
         }
         holder.share.setOnClickListener {
-            onShare.OnClick(item)
+            onShare.onClick(item)
 
         }
         holder.parent.setCardBackgroundColor(returnColor(holder.itemView.context))

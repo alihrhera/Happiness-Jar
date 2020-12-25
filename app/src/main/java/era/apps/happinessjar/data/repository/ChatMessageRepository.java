@@ -78,7 +78,7 @@ public class ChatMessageRepository {
                             ,conversation.getList().get(conversation.getList().size()-1).getMessages(),"ChatMessage");
                     if (onMessageSent != null) {
 
-                        onMessageSent.OnSent();
+                        onMessageSent.onSent();
                     }
                 }
             });
@@ -86,7 +86,7 @@ public class ChatMessageRepository {
         }
         reference.setValue(conversation).addOnCompleteListener(task -> {
             if (onMessageSent != null) {
-                onMessageSent.OnSent();
+                onMessageSent.onSent();
             }
         });
         // COMPLETED (2)  ADD NEW CON
@@ -101,7 +101,7 @@ public class ChatMessageRepository {
                             ,conversation.getList().get(conversation.getList().size()-1).getMessages(),"ChatMessage");
                     if (onMessageSent != null) {
 
-                        onMessageSent.OnSent();
+                        onMessageSent.onSent();
                     }
                 }
             });

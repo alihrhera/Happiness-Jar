@@ -29,11 +29,11 @@ public class DataManger {
     }
 
     public void loading() {
-        appStatues.OnClick(true);
+        appStatues.onClick(true);
     }
 
     public void normal() {
-        appStatues.OnClick(false);
+        appStatues.onClick(false);
     }
 
 

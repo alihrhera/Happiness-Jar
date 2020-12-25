@@ -33,7 +33,7 @@ class CustomPagerAdapter : PagerAdapter() {
         val view = inflater.inflate(modelList[position], collection, false)
         if (position == modelList.size - 1) {
             view.findViewById<View>(R.id.finishSlider).setOnClickListener {
-            onItemClick!!.OnClick(0) }
+            onItemClick!!.onClick(0) }
         }
         collection.addView(view)
         return view
