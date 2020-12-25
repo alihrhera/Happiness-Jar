@@ -20,8 +20,8 @@ public class StoryRepository {
     private LiveData<List<Story>> allStories;
 
     public StoryRepository(Application application) {
-        StoryDataBaseHelper storyData = StoryDataBaseHelper.getInstance(application);
-        storyDao = storyData.storyDao();
+        StoryDataBaseHelper storyData = StoryDataBaseHelper.Companion.getInstance(application);
+        storyDao = storyData. storyDao();
         allStories = storyDao.getAllStory();
         Thread t = new Thread(() -> {
 
