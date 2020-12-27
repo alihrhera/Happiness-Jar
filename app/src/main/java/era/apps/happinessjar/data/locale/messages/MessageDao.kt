@@ -23,15 +23,15 @@ interface MessageDao {
     fun delete( message:AppMessage)
 
     // get all app message from database witch type = message
-    @Query("Select * from Message where type='message'")
+    @Query("Select * from AppMessage where type='message'")
     fun getAllAppMessage():LiveData<List<AppMessage>>
 
     // get all app message from database witch type = whatsApp
-    @Query("Select * from Message where type='WhatsApp'")
+    @Query("Select * from AppMessage where type='WhatsApp'")
     fun getAllAppWhatsApp() :LiveData<List<AppMessage>>
 
     // get all app message from database witch is liked by user
-    @Query("Select * from Message where status=1")
+    @Query("Select * from AppMessage where status=1")
     fun getAllLikesMessage():LiveData<List<AppMessage>>
 
 
