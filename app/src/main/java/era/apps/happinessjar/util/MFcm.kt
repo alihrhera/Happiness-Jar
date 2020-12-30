@@ -22,7 +22,8 @@ class MFcm : FirebaseMessagingService (){
                     .notifyUserThereIsNewMessage(s, "ربنا معاك وبيجبر بخاطرك ديما و بيحبك ف تفائل ❤️", "message")
         }
         getSharedPreferences("info", 0)
-                .edit().putString("fcm", s).apply()    }
+                .edit().putString("fcm", s).apply()
+    }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.e("Test Fcm ", remoteMessage.getData().toString())

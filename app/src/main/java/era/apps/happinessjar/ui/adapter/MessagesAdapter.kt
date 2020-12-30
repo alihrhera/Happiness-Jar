@@ -128,7 +128,7 @@ class MessagesAdapter : ListAdapter<AppMessage, MessagesAdapter.MessagesHolder>(
         fun bind(item: AppMessage) {
             messageContent.text = item.content
             like.setImageResource(R.drawable.ic_not_like)
-            if (item.isLiked){
+            if (item.isLiked()){
                 like.setImageResource(R.drawable.ic_like)
 
             }

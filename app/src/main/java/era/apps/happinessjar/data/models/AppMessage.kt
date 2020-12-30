@@ -19,7 +19,7 @@ data class AppMessage(
 
 
     @Ignore
-    fun isLiked(): Boolean {
+    public fun isLiked(): Boolean {
         return status == 1
     }
 

@@ -168,14 +168,15 @@ class MainActivity : AppCompatActivity() {
 
 
     private val status = object : OnItemClick {
-        override fun OnClick(item: Any?) {
+
+
+        override fun onClick(item: Any) {
             if (item as Boolean) {
                 binding.loading.visibility = View.VISIBLE
 
                 return
             }
             binding.loading.visibility = View.GONE
-
 
         }
     }

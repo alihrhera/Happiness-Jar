@@ -18,10 +18,12 @@ class SliderFragment : Fragment() {
         val getImabg = intArrayOf(R.layout.s_layout1, R.layout.s_layout2, R.layout.s_layout3, R.layout.s_layout4)
         val sliderPage: ViewPager = root.findViewById(R.id.slider1)
         val adapter = CustomPagerAdapter()
-        adapter.setOnItemClick(OnItemClick {
-            activity?.getSharedPreferences("info", 0)?.edit()
-                    ?.putBoolean("firstTime", false)?.apply()
-            (activity as MainActivity).attachFragment(R.id.navMessagesFragment)
+        adapter.setOnItemClick(object : OnItemClick {
+            override fun onClick(item: Any) {
+                activity?.getSharedPreferences("info", 0)?.edit()
+                        ?.putBoolean("firstTime", false)?.apply()
+                (activity as MainActivity).attachFragment(R.id.navMessagesFragment)
+            }
         })
         adapter.setModelList(getImabg)
         sliderPage.adapter = adapter

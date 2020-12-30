@@ -1,0 +1,136 @@
+{
+  "project_info": {
+    "project_number": "678747848214",
+    "firebase_url": "https://test-9bcba.firebaseio.com",
+    "project_id": "test-9bcba",
+    "storage_bucket": "test-9bcba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678747848214:android:dcc96790f9753cc2b43f37",
+        "android_client_info": {
+          "package_name": "com.customs.bag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678747848214-ccdun6siegfm92r9p0vgsa067i59tgce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByFaGwjZnfq1xIiOBabjl9WTiUzITc7vw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678747848214-ccdun6siegfm92r9p0vgsa067i59tgce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678747848214:android:358f024a899d960d",
+        "android_client_info": {
+          "package_name": "com.happiness.jar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678747848214-f0cccqegfv7naiovoenb64oa8fqi3f6k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.happiness.jar",
+            "certificate_hash": "fe4ad0b3e168ce0eecc714c6fc02c3626cf93b7d"
+          }
+        },
+        {
+          "client_id": "678747848214-ccdun6siegfm92r9p0vgsa067i59tgce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByFaGwjZnfq1xIiOBabjl9WTiUzITc7vw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678747848214-ccdun6siegfm92r9p0vgsa067i59tgce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-5608130680601924~2528001047"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678747848214:android:e6e15b75af05a562b43f37",
+        "android_client_info": {
+          "package_name": "era.apps.happinesjarcp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678747848214-ccdun6siegfm92r9p0vgsa067i59tgce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByFaGwjZnfq1xIiOBabjl9WTiUzITc7vw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678747848214-ccdun6siegfm92r9p0vgsa067i59tgce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678747848214:android:f756733c8f9dbb1cb43f37",
+        "android_client_info": {
+          "package_name": "era.apps.happinessjar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678747848214-ccdun6siegfm92r9p0vgsa067i59tgce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByFaGwjZnfq1xIiOBabjl9WTiUzITc7vw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678747848214-ccdun6siegfm92r9p0vgsa067i59tgce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

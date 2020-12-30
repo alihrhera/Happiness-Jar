@@ -15,6 +15,7 @@ class MessagesViewModel(application: Application) : AndroidViewModel(application
     val allAppMessage: LiveData<List<AppMessage>>
     val allAppWhatsApp: LiveData<List<AppMessage>>
     val allLikesMessage: LiveData<List<AppMessage>>
+
     init {
         allAppMessage = repository.getAllAppMessage()
         allAppWhatsApp = repository.getAllAppWhatsApp()

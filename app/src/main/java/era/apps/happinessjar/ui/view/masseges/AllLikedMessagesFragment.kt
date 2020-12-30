@@ -43,19 +43,25 @@ class AllLikedMessagesFragment : Fragment() {
 
 
 
-        adapter.onLike = OnItemClick { item ->
-            run {
-                model.like(item as AppMessage)
+        adapter.onLike = object : OnItemClick {
+            override fun onClick(item: Any) {
+                run {
+                    model.like(item as AppMessage)
+                }
             }
         }
-        adapter.onSave = OnItemClick { item ->
-            run {
+        adapter.onSave = object : OnItemClick {
+            override fun onClick(item: Any) {
+                run {
 
+                }
             }
         }
-        adapter.onShare = OnItemClick { item ->
-            run {
+        adapter.onShare = object : OnItemClick {
+            override fun onClick(item: Any) {
+                run {
 
+                }
             }
         }
 

@@ -1,5 +1,5 @@
 package era.apps.happinessjar.util.callback
 
-interface OnItemClick {
+public interface OnItemClick {
     fun onClick(item:Any)
 }
