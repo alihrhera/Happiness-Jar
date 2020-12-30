@@ -21,16 +21,16 @@ class MessagesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val root=inflater.inflate(R.layout.fragment_massges, container, false)
+        val root = inflater.inflate(R.layout.fragment_massges, container, false)
 
         (activity as MainActivity).showBottom()
 
         val adapter = MessagesAdapter()
-        val model=(activity as MainActivity).getMessageViwModel()
+        // val model=(activity as MainActivity).getMessageViwModel()
         adapter.onLike = object : OnItemClick {
             override fun onClick(item: Any) {
                 run {
-                    model.like(item as AppMessage)
+                    // model.like(item as AppMessage)
                 }
             }
         }
@@ -50,7 +50,7 @@ class MessagesFragment : Fragment() {
         }
 
 
-        model.allAppMessage.observe(activity as MainActivity,
+        /*model.allAppMessage.observe(activity as MainActivity,
                 object : Observer<List<AppMessage>> {
                     override fun onChanged(list: List<AppMessage>?) {
                         run {
@@ -61,11 +61,11 @@ class MessagesFragment : Fragment() {
                     }
                 }
         )
+*/
 
-
-        val showAllMessage: RecyclerView =root.findViewById(R.id.showAllMessage)
-        showAllMessage.layoutManager= LinearLayoutManager(context)
-        showAllMessage.adapter=adapter
+        val showAllMessage: RecyclerView = root.findViewById(R.id.showAllMessage)
+        showAllMessage.layoutManager = LinearLayoutManager(context)
+        showAllMessage.adapter = adapter
 
 
 

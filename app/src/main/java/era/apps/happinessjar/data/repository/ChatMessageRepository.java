@@ -19,6 +19,7 @@ import java.util.Map;
 
 import era.apps.happinessjar.data.models.Conversation;
 import era.apps.happinessjar.data.networking.AppApi;
+import era.apps.happinessjar.util.DataManger;
 import era.apps.happinessjar.util.callback.OnMessageSent;
 
 public class ChatMessageRepository {
@@ -26,7 +27,7 @@ public class ChatMessageRepository {
 
     private ChatMessageRepository(String userId) {
         reference = FirebaseDatabase.getInstance().getReference("Conversations/" + userId);
-        Log.e("UserRefrance",reference.getKey());
+        Log.e("UserRefrance", reference.getKey());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -74,8 +75,9 @@ public class ChatMessageRepository {
             map.put("list", conversation.getList());
             reference.updateChildren(map).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    AppApi.getInstance().notifyUserThereIsNewMessage(conversation.getFcmToken()
-                            ,conversation.getList().get(conversation.getList().size()-1).getMessages(),"ChatMessage");
+                    AppApi.getInstance().notifyUserThereIsNewMessage(DataManger.getInstance().getAdminKey()
+                            , conversation.getList()
+                                    .get(conversation.getList().size() - 1).getMessages(), "ChatMessage");
                     if (onMessageSent != null) {
 
                         onMessageSent.onSent();
@@ -93,18 +95,18 @@ public class ChatMessageRepository {
     }
 
     public void updateMessage(Conversation conversation) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("list", conversation.getList());
-            reference.updateChildren(map).addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    AppApi.getInstance().notifyUserThereIsNewMessage(conversation.getFcmToken()
-                            ,conversation.getList().get(conversation.getList().size()-1).getMessages(),"ChatMessage");
-                    if (onMessageSent != null) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("list", conversation.getList());
+        reference.updateChildren(map).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                AppApi.getInstance().notifyUserThereIsNewMessage(conversation.getFcmToken()
+                        , conversation.getList().get(conversation.getList().size() - 1).getMessages(), "ChatMessage");
+                if (onMessageSent != null) {
 
-                        onMessageSent.onSent();
-                    }
+                    onMessageSent.onSent();
                 }
-            });
+            }
+        });
     }
 
     private final MutableLiveData<Conversation> listMutableLiveData = new MutableLiveData<>();

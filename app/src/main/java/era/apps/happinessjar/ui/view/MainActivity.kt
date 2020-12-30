@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         DataManger.getInstance().setAppStatues(status)
         DataManger.getInstance().normal()
-        messageViwModel = ViewModelProvider(this).get(MessagesViewModel::class.java)
+        //messageViwModel = ViewModelProvider(this).get(MessagesViewModel::class.java)
         if (supportActionBar != null) {
             acBar = supportActionBar!!
         }
