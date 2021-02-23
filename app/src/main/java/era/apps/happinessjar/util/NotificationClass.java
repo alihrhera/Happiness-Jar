@@ -12,7 +12,7 @@ import androidx.core.app.NotificationCompat;
 import era.apps.happinessjar.ui.view.MainActivity;
 import era.apps.happinessjar.R;
 
-class NotificationClass {
+    class NotificationClass {
 
     private static final NotificationClass obj = new NotificationClass();
 

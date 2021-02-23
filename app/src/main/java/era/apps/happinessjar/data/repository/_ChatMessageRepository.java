@@ -1,7 +1,6 @@
 package era.apps.happinessjar.data.repository;
 
 
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -22,12 +21,11 @@ import era.apps.happinessjar.data.networking.AppApi;
 import era.apps.happinessjar.util.DataManger;
 import era.apps.happinessjar.util.callback.OnMessageSent;
 
-public class ChatMessageRepository {
+public class _ChatMessageRepository {
     private boolean isUser = false;
 
-    private ChatMessageRepository(String userId) {
+    private _ChatMessageRepository(String userId) {
         reference = FirebaseDatabase.getInstance().getReference("Conversations/" + userId);
-        Log.e("UserRefrance", reference.getKey());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -51,11 +49,11 @@ public class ChatMessageRepository {
         });
     }
 
-    private static ChatMessageRepository messageRepository;
+    private static _ChatMessageRepository messageRepository;
 
-    public static synchronized ChatMessageRepository getInstance(String userId) {
+    public static synchronized _ChatMessageRepository getInstance(String userId) {
         if (messageRepository == null) {
-            messageRepository = new ChatMessageRepository(userId);
+            messageRepository = new _ChatMessageRepository(userId);
         }
         return messageRepository;
     }
@@ -94,15 +92,16 @@ public class ChatMessageRepository {
         // COMPLETED (2)  ADD NEW CON
     }
 
+
     public void updateMessage(Conversation conversation) {
         Map<String, Object> map = new HashMap<>();
         map.put("list", conversation.getList());
         reference.updateChildren(map).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                AppApi.getInstance().notifyUserThereIsNewMessage(conversation.getFcmToken()
-                        , conversation.getList().get(conversation.getList().size() - 1).getMessages(), "ChatMessage");
+              /*  AppApi.getInstance().notifyUserThereIsNewMessage(conversation.getFcmToken()
+                        , conversation.getList().get(conversation.getList().size() - 1)
+                                .getMessages(), "ChatMessage");*/
                 if (onMessageSent != null) {
-
                     onMessageSent.onSent();
                 }
             }
