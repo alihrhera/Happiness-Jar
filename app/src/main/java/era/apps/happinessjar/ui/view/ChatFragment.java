@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 
 import era.apps.happinessjar.R;
 import era.apps.happinessjar.data.models.ChatMessages;
@@ -35,7 +36,8 @@ public class ChatFragment extends Fragment {
     private ChatViewModel model;
     private Conversation con;
     private String fcm;
-    private boolean isFirstLock=true;
+    private boolean isFirstLock = true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,11 +45,15 @@ public class ChatFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_chat, container, false);
         RecyclerView allChat = root.findViewById(R.id.chat);
         allChat.setLayoutManager(new LinearLayoutManager(getContext()));
+        allChat.hasFixedSize();
         Context context = getContext();
+
+        model = ((MainActivity) requireActivity()).chatModel;
+
         assert context != null;
         myId = context.getSharedPreferences("info", 0)
                 .getString("chatId", "");
-         fcm = context.getSharedPreferences("info", 0)
+        fcm = context.getSharedPreferences("info", 0)
                 .getString("fcm", "");
 
         String name = context.getSharedPreferences("info", 0)
@@ -59,30 +65,32 @@ public class ChatFragment extends Fragment {
         if (model == null) {
             model = new ViewModelProvider(this).get(ChatViewModel.class);
         }
-        model.setOnMessageSent(() -> getMsg.setText(""));
         model.getAllChatMessage().observe(requireActivity(), conversation -> {
             DataManger.getInstance().normal();
-            if (conversation != null) {
+            if (conversation != null && !conversation.getId().equals("")) {
                 con = conversation;
                 adapter.setDataList(con.getList());
-                if (isFirstLock){
-                    int i=0;
-                    for (ChatMessages m:con.getList()){
-                        i=i+1;
-                        if (!m.getSenderId().equals(myId) &&!m.isRead()){
+                if (isFirstLock) {
+                    int i = 0;
+                    for (ChatMessages m : con.getList()) {
+                        i = i + 1;
+                        if (!m.getSenderId().equals(myId) && !m.isRead()) {
                             break;
                         }
-
                     }
+
                     allChat.scrollToPosition(i);
-                    isFirstLock=false;
-                    for (ChatMessages m:con.getList()){
-                        if (!m.getSenderId().equals(myId) ){
+                    isFirstLock = false;
+                    for (ChatMessages m : con.getList()) {
+                        if (!m.getSenderId().equals(myId)) {
                             m.setRead(true);
                         }
 
                     }
                     model.update(con);
+                    allChat.scrollToPosition(i);
+                } else {
+                    allChat.scrollToPosition(con.getList().size() - 1);
                 }
                 return;
             }
@@ -120,8 +128,10 @@ public class ChatFragment extends Fragment {
         conversation.getList().add(oneMessage);
         conversation.setLastTimeSend(oneMessage.getTime());
         conversation.setFcmToken(fcm);
+        getMsg.setText("");
         model.sendMessage(conversation);//sendMsg(con);
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

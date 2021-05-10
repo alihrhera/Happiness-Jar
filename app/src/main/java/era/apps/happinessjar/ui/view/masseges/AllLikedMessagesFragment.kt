@@ -1,6 +1,7 @@
 package era.apps.happinessjar.ui.view.masseges
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,54 +22,55 @@ class AllLikedMessagesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val root= inflater.inflate(R.layout.fragment_liked_massges, container, false)
+        val root = inflater.inflate(R.layout.fragment_liked_massges, container, false)
 
-        val model= (activity as MainActivity).getMessageViwModel()
+        val model = (activity as MainActivity).getMessageViwModel()
 
 
         val adapter = MessagesAdapter()
 
 
 
-       model.allLikesMessage.observe(activity as MainActivity,
+        model.allLikesMessage.observe(activity as MainActivity,
                 object : Observer<List<AppMessage>> {
                     override fun onChanged(list: List<AppMessage>?) {
                         run {
-                            let {
-                                adapter.submitList(list as MutableList<AppMessage>)
-                            }
+                            adapter.submitList(list as MutableList<AppMessage>)
                         }
                     }
                 })
 
+        adapter.run {
+            onLike = object : OnItemClick {
+                override fun onClick(item: Any) {
+                    run {
+                        model.like(item as AppMessage)
+                    }
+                }
+            }
 
+            onSave = object : OnItemClick {
+                override fun onClick(item: Any) {
+                    run {
 
-        adapter.onLike = object : OnItemClick {
-            override fun onClick(item: Any) {
-                run {
-                    model.like(item as AppMessage)
+                    }
+                }
+            }
+
+            onShare = object : OnItemClick {
+                override fun onClick(item: Any) {
+                    run {
+
+                    }
                 }
             }
         }
-        adapter.onSave = object : OnItemClick {
-            override fun onClick(item: Any) {
-                run {
-
-                }
-            }
-        }
-        adapter.onShare = object : OnItemClick {
-            override fun onClick(item: Any) {
-                run {
-
-                }
-            }
-        }
 
 
-        val showAllLikeMessage: RecyclerView =root.findViewById(R.id.showAllLikeMessage)
-        showAllLikeMessage.layoutManager= LinearLayoutManager(context)
-        showAllLikeMessage.adapter=adapter
+
+        val showAllLikeMessage: RecyclerView = root.findViewById(R.id.showAllLikeMessage)
+        showAllLikeMessage.layoutManager = LinearLayoutManager(context)
+        showAllLikeMessage.adapter = adapter
 
         return root
     }

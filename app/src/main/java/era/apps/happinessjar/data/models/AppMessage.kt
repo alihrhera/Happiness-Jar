@@ -12,14 +12,10 @@ data class AppMessage(
         val type: String,
 ){
     @PrimaryKey(autoGenerate = true) var id: Int=0
-    set(value) { field = value
-    }
-    get() = field
-
 
 
     @Ignore
-    public fun isLiked(): Boolean {
+    fun isLiked(): Boolean {
         return status == 1
     }
 

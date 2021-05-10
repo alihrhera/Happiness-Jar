@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import era.apps.happinessjar.R
+import era.apps.happinessjar.data.models.Story
 import era.apps.happinessjar.ui.adapter.StoriesAdapter
 import era.apps.happinessjar.ui.viewmodel.StoriesViewModel
-import era.apps.happinessjar.data.models.Story
 
 
 class StoriesFragment : Fragment() {
@@ -23,7 +22,7 @@ class StoriesFragment : Fragment() {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_stories, container, false)
 
-
+        model = (activity as MainActivity).storyViewModel
         val adapter = StoriesAdapter()
 
 
@@ -32,8 +31,6 @@ class StoriesFragment : Fragment() {
                     override fun onChanged(list: List<Story>) {
                         run {
                             let {
-                                Log.e("OutSide Size", list.size.toString() + "")
-
                                 adapter.submitList(list as MutableList<Story>)
                                 adapter.notifyDataSetChanged()
                             }
@@ -53,9 +50,5 @@ class StoriesFragment : Fragment() {
     }
 
     private lateinit var model: StoriesViewModel
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        model= ViewModelProvider(this).get(StoriesViewModel::class.java)
-    }
 
 }

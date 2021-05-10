@@ -28,6 +28,8 @@ class SplashFragment : Fragment() {
             if (first!!) {
                 (activity as MainActivity).attachFragment(R.id.sliderFragment)
             }else {
+//                (activity as MainActivity).messages.callOnClick()
+
                 (activity as MainActivity).attachFragment(R.id.navMessagesFragment)
             }
 

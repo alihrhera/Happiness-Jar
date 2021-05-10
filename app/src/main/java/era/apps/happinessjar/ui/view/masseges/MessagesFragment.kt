@@ -25,12 +25,18 @@ class MessagesFragment : Fragment() {
 
         (activity as MainActivity).showBottom()
 
+        if (!(activity?.getSharedPreferences("info", 0)?.getBoolean("showGetName", false))!!) {
+            (activity as MainActivity).showNameDialog()
+        }
+
+
         val adapter = MessagesAdapter()
-        // val model=(activity as MainActivity).getMessageViwModel()
+        val model = (activity as MainActivity).getMessageViwModel()
+        model.nullDelete()
         adapter.onLike = object : OnItemClick {
             override fun onClick(item: Any) {
                 run {
-                    // model.like(item as AppMessage)
+                    model.like(item as AppMessage)
                 }
             }
         }
@@ -50,7 +56,7 @@ class MessagesFragment : Fragment() {
         }
 
 
-        /*model.allAppMessage.observe(activity as MainActivity,
+        model.allAppMessage.observe(activity as MainActivity,
                 object : Observer<List<AppMessage>> {
                     override fun onChanged(list: List<AppMessage>?) {
                         run {
@@ -61,7 +67,7 @@ class MessagesFragment : Fragment() {
                     }
                 }
         )
-*/
+
 
         val showAllMessage: RecyclerView = root.findViewById(R.id.showAllMessage)
         showAllMessage.layoutManager = LinearLayoutManager(context)

@@ -12,12 +12,12 @@ import era.apps.happinessjar.ui.view.masseges.MessageWidget.Companion.sUpdateApp
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class MFcm : FirebaseMessagingService (){
+class MFcm : FirebaseMessagingService() {
     override fun onNewToken(s: String) {
         super.onNewToken(s)
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("DeviceTokens")
-        myRef.child(s).setValue(s).addOnSuccessListener { aVoid: Void? ->
+        myRef.child(s).setValue(s).addOnSuccessListener {
             AppApi.getInstance()
                     .notifyUserThereIsNewMessage(s, "ربنا معاك وبيجبر بخاطرك ديما و بيحبك ف تفائل ❤️", "message")
         }
@@ -26,23 +26,25 @@ class MFcm : FirebaseMessagingService (){
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        Log.e("Test Fcm ", remoteMessage.getData().toString())
-        if (remoteMessage.getData().get("type")!!.contains("ChatMessage")) {
+        Log.e("Test Fcm ", remoteMessage.data.toString())
+        if (remoteMessage.data["type"]!!.contains("ChatMessage")) {
             if (!DataManger.getInstance().isChatOpen) {
                 NotificationClass.getInstance().showNotification(applicationContext, "chat" + "لديك رد على رسالتك ")
             }
-        }
-        if (remoteMessage.getData().get("type")!!.contains("Message")) {
-            if (!DataManger.getInstance().isChatOpen) {
-                val message: String = remoteMessage.getData().get("Message").toString()
-                NotificationClass.getInstance().showNotification(applicationContext, "message$message")
+        } else if (remoteMessage.data["type"]!!.contains("Admin")) {
+//
+            NotificationClass.getInstance().showNotification(applicationContext, "message" + " أهلا بيك ان شاء الله هيتم ارسال رسالتين بصوره يوميه  شكرا لاستخدامك برطمان السعاده :)")
+
+        } else if (remoteMessage.data["type"]!!.toLowerCase().contains(("Message").toString().toLowerCase())) {
+                val message: String = remoteMessage.data["Message"].toString()
+                NotificationClass.getInstance().showNotification(applicationContext, "message"+message)
                 applicationContext.getSharedPreferences("message", 0)
                         .edit().putString("WidgetMessage", message).apply()
                 val appWidgetManager = AppWidgetManager.getInstance(applicationContext)
                 val mAppWidgetId = applicationContext
                         .getSharedPreferences("msg", 0).getInt("widgId", 0)
                 sUpdateAppWidget(applicationContext, appWidgetManager, mAppWidgetId)
-                // NewAppWidget.updateCurrentWidget(getApplicationContext(),messg);
+
                 /* icon = R.drawable.logo;
                 CreateNotifa.getInstance(getApplicationContext())
                         .Notify("صباح الخير رسالتك جاهزه", icon,type);
@@ -51,9 +53,9 @@ class MFcm : FirebaseMessagingService (){
                 repo.Insert(row);*/
                 val appMessage = AppMessage(0, message, "message")
                 val repository = MessageRepository(application)
+
                 GlobalScope.launch {
                     repository.insert(appMessage)
-                }
             }
         }
     }

@@ -1,11 +1,16 @@
 package era.apps.happinessjar.ui.view
 
+import android.app.Dialog
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -14,9 +19,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import era.apps.happinessjar.R
-import era.apps.happinessjar.databinding.ActivityMainBinding
-import era.apps.happinessjar.ui.viewmodel.MessagesViewModel
 import era.apps.happinessjar.data.networking.AppApi
+import era.apps.happinessjar.databinding.ActivityMainBinding
+import era.apps.happinessjar.ui.viewmodel.ChatViewModel
+import era.apps.happinessjar.ui.viewmodel.MessagesViewModel
+import era.apps.happinessjar.ui.viewmodel.StoriesViewModel
 import era.apps.happinessjar.util.DataManger
 import era.apps.happinessjar.util.callback.OnItemClick
 
@@ -29,6 +36,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var messageViwModel: MessagesViewModel
+    lateinit var storyViewModel: StoriesViewModel
+    lateinit var chatModel: ChatViewModel
 
     fun showBottom() {
         binding.bLay.parentView.visibility = View.VISIBLE
@@ -38,28 +47,34 @@ class MainActivity : AppCompatActivity() {
         binding.bLay.parentView.visibility = View.GONE
     }
 
+    private lateinit var messages: RelativeLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         DataManger.getInstance().setAppStatues(status)
         DataManger.getInstance().normal()
-        //messageViwModel = ViewModelProvider(this).get(MessagesViewModel::class.java)
+        messageViwModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(MessagesViewModel::class.java)
+        storyViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(StoriesViewModel::class.java)
+        chatModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(ChatViewModel::class.java)
+
         if (supportActionBar != null) {
             acBar = supportActionBar!!
         }
-
-        val navHostFragment =
-                supportFragmentManager.findFragmentById(R.id.mainFragmentContainer) as NavHostFragment
-        navController = navHostFragment.navController
-        container = findViewById(R.id.container)
 
         val setting = findViewById<RelativeLayout>(R.id.bottom_settings)
         val stories = findViewById<RelativeLayout>(R.id.bottom_stories)
         val like = findViewById<RelativeLayout>(R.id.bottom_like)
         val whatsApp = findViewById<RelativeLayout>(R.id.bottom_whatsApp)
-        val messages = findViewById<RelativeLayout>(R.id.bottom_message)
+        messages = findViewById(R.id.bottom_message)
+
+        val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.mainFragmentContainer) as NavHostFragment
+        navController = navHostFragment.navController
+        container = findViewById(R.id.container)
 
         //bottomDefaultViewStatus()
         setting.setOnClickListener {
@@ -100,6 +115,7 @@ class MainActivity : AppCompatActivity() {
         val fcm = getSharedPreferences("info", 0)
                 .getString("fcm", "").toString()
         val myRef = FirebaseDatabase.getInstance().getReference("DeviceTokens/$fcm")
+        AppApi.getInstance().insertNewUser(fcm)
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -111,8 +127,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+
             }
         })
+
+
+
         if (intent.action != null) {
             val type = intent.action.toString()
             if (type.contains("chat")) {
@@ -121,6 +141,8 @@ class MainActivity : AppCompatActivity() {
                 attachFragment(R.id.navMessagesFragment)
             }
         }
+
+
     }
 
     private var fragID = 0
@@ -135,11 +157,7 @@ class MainActivity : AppCompatActivity() {
         return messageViwModel
     }
 
-    /*
-    fun showActionBar() {
-        acBar.show()
-    }
-    */
+
     fun hidActionBar() {
         this.acBar.hide()
     }
@@ -169,7 +187,6 @@ class MainActivity : AppCompatActivity() {
 
     private val status = object : OnItemClick {
 
-
         override fun onClick(item: Any) {
             if (item as Boolean) {
                 binding.loading.visibility = View.VISIBLE
@@ -188,5 +205,44 @@ class MainActivity : AppCompatActivity() {
         }
         super.onBackPressed()
     }
+
+
+    fun showNameDialog() {
+        object : Dialog(this@MainActivity) {
+            override fun onCreate(savedInstanceState: Bundle?) {
+                super.onCreate(savedInstanceState)
+                setContentView(R.layout.dialog_get_name)
+                val width = (resources.displayMetrics.widthPixels * 0.90).toInt()
+//                    if (window == null) {
+//                        return
+//                    }
+//                    // getWindow().setBackgroundDrawableResource(R.color.transparent);
+                window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+                window?.setBackgroundDrawableResource(R.color.fullTrans)
+                val getName = findViewById<EditText>(R.id.getName)
+                findViewById<View>(R.id.done).setOnClickListener {
+                    val name = getName.text.toString()
+                    getSharedPreferences("info", 0)?.edit()
+                            ?.putString("messageName", name)?.apply()
+                    getSharedPreferences("info", 0)?.edit()
+                            ?.putBoolean("showGetName", true)?.apply()
+                    dismiss()
+                }
+
+
+            }
+        }.show()
+    }
+
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        when (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+    }
+
 
 }

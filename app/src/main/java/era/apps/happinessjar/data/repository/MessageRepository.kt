@@ -4,8 +4,8 @@ package era.apps.happinessjar.data.repository;
 import android.app.Application
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import era.apps.happinessjar.data.locale.messages.MessageDao
-import era.apps.happinessjar.data.locale.messages.MessageDataBaseHelper
+import era.apps.happinessjar.data.locale.MessageDao
+import era.apps.happinessjar.data.locale.DataBaseHelper
 import era.apps.happinessjar.data.models.AppMessage
 
 public class MessageRepository (application: Application){
@@ -21,7 +21,7 @@ public class MessageRepository (application: Application){
     private val allLikesMessage : LiveData<kotlin.collections.List<AppMessage>>
 
     init {
-        val dataBase = MessageDataBaseHelper.getInstance(application!!)
+        val dataBase = DataBaseHelper.getInstance(application!!)
         messageDao = dataBase.messageDao()
         allAppMessage = messageDao.getAllAppMessage()
         allAppWhatsApp = messageDao.getAllAppWhatsApp()
@@ -60,7 +60,13 @@ public class MessageRepository (application: Application){
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun updateMessage(message: AppMessage) {
+        message.status = if (message.status == 1) 0 else 1
         messageDao.update(message)
+    }
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun nullDelete() {
+        messageDao.nullDelete()
     }
 
 

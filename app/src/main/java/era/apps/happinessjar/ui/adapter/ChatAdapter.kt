@@ -11,7 +11,7 @@ import java.sql.Date
 import java.util.*
 import java.util.Collections.sort
 
-public class ChatAdapter(private val id: String) : RecyclerView.Adapter<ChatAdapter.MyViewHolder>() {
+ class ChatAdapter(private val id: String) : RecyclerView.Adapter<ChatAdapter.MyViewHolder>() {
     private var dataList: List<ChatMessages> = ArrayList()
 
     fun setDataList(list: List<ChatMessages>) {

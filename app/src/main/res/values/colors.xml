@@ -26,6 +26,7 @@
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
     <color name="gray">#9F9D9D</color>
+    <color name="fullTrans">#00FFFFFF</color>
 
 
 </resources>

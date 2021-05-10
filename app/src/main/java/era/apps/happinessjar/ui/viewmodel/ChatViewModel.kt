@@ -15,22 +15,19 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
     fun getAllChatMessage():LiveData<Conversation>{
         return allChatMessage
     }
-    fun setOnMessageSent(onMessageSent: OnMessageSent?) {
-        repository.setOnMessageSent(onMessageSent)
-    }
 
 
-    fun sendMessage(conversation: Conversation?) {
+    fun sendMessage(conversation: Conversation) {
         repository.sendMessage(conversation)
     }
 
-    fun update(conversation: Conversation?) {
+    fun update(conversation: Conversation) {
         repository.updateMessage(conversation)
     }
 
     init {
         val id = application.getSharedPreferences("info", 0).getString("chatId", "")
-        repository = ChatMessageRepository.getInstance(id)
+        repository = ChatMessageRepository.getInstance(id!!)!!
         allChatMessage = repository.chatMessage
     }
 }

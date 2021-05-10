@@ -16,7 +16,6 @@ import era.apps.happinessjar.util.callback.OnItemClick
 import era.apps.happinessjar.data.models.AppMessage
 
 
-
 class MessagesAdapter : ListAdapter<AppMessage, MessagesAdapter.MessagesHolder>(MessageDiffCallback()) {
 
 
@@ -45,7 +44,8 @@ class MessagesAdapter : ListAdapter<AppMessage, MessagesAdapter.MessagesHolder>(
 
     override fun submitList(list: MutableList<AppMessage>?) {
         super.submitList(list)
-        messageList=list as List<AppMessage>
+        messageList = list as List<AppMessage>
+        notifyDataSetChanged()
     }
 
 
@@ -128,7 +128,7 @@ class MessagesAdapter : ListAdapter<AppMessage, MessagesAdapter.MessagesHolder>(
         fun bind(item: AppMessage) {
             messageContent.text = item.content
             like.setImageResource(R.drawable.ic_not_like)
-            if (item.isLiked()){
+            if (item.isLiked()) {
                 like.setImageResource(R.drawable.ic_like)
 
             }

@@ -36,19 +36,20 @@ class MessageWidget : AppWidgetProvider() {
     }
 }
 
-internal fun updateAppWidget( context: Context,
-                              appWidgetManager: AppWidgetManager
-                             ,appWidgetId: Int) {
+internal fun updateAppWidget(context: Context,
+                             appWidgetManager: AppWidgetManager, appWidgetId: Int) {
     val widgetText = context.getSharedPreferences("message", 0)
             .getString("WidgetMessage", "")
 
-    val views = RemoteViews(context.packageName, R.layout.message_widget)
-    views.setTextViewText(R.id.appwidget_text, widgetText)
-    appWidgetManager.updateAppWidget(appWidgetId, views)
-    showShareApp(context, widgetText!!)
-}
+    if (!widgetText.equals("null")||widgetText?.length!!>7) {
+        val views = RemoteViews(context.packageName, R.layout.message_widget)
+        views.setTextViewText(R.id.appwidget_text, widgetText)
+        appWidgetManager.updateAppWidget(appWidgetId, views)
+        showShareApp(context, widgetText!!)
+    }
+    }
 
 
-fun showShareApp(context: Context, message: String) {
+    fun showShareApp(context: Context, message: String) {
 
-}
+    }

@@ -1,4 +1,4 @@
-package era.apps.happinessjar.data.locale.stories
+package era.apps.happinessjar.data.locale
 
 
 import androidx.lifecycle.LiveData

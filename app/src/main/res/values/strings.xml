@@ -23,6 +23,8 @@
     <string name="writ_message">نحب ان نسمع لك اقتراحاتك او رسالتك  </string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="hintName">اكتب اسمك حتى تظهر الرساله باسمك</string>
+    <string name="done">Done</string>
 
 
 </resources>

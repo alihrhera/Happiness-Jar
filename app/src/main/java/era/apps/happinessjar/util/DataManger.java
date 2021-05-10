@@ -16,17 +16,15 @@ import era.apps.happinessjar.util.callback.OnItemClick;
 public class DataManger {
 
     private static final DataManger obj = new DataManger();
-
+    public static int lastChatValue=50;
     private DataManger() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("AdminToken");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-                    Log.e("test KE ",snapshot.getChildren().toString());
                     for (DataSnapshot s:snapshot.getChildren()){
                         AdminKey=s.getValue(String.class);
-
                     }
                 }
             }

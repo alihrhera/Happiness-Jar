@@ -43,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120sdp">
         <ProgressBar
+            android:progressTint="@color/color5"
             android:layout_gravity="center"
             android:indeterminate="false"
             android:layout_width="@dimen/_90sdp"

@@ -61,15 +61,33 @@ public class AppApi {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                    Log.e("Tset Response",response);
+                    Log.e("Test Response",response);
                     }
 
                     @Override
                     public void onError(ANError anError) {
-                        Log.e("Tset Response","Error -> "+anError.getMessage());
+                        Log.e("Test Response","Error -> "+anError.getMessage());
 
                     }
                 });
+
+    }
+
+    public void  insertNewUser(String fcm){
+        AndroidNetworking.post(URL+"happiness_jar/newInsert.php")
+                .setTag(this)
+                .setPriority(Priority.HIGH)
+                .addBodyParameter("token",fcm)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("Test Response",response);
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.e("Test Response","Error -> "+anError.getMessage());
+                    }});
 
     }
 

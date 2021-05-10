@@ -12,24 +12,23 @@ import androidx.core.app.NotificationCompat;
 import era.apps.happinessjar.ui.view.MainActivity;
 import era.apps.happinessjar.R;
 
-    class NotificationClass {
+class NotificationClass {
 
     private static final NotificationClass obj = new NotificationClass();
 
 
     private NotificationClass() {
     }
+
     public static synchronized NotificationClass getInstance() {
         return obj;
     }
 
 
+    private int notifyID = 0;
 
-    private int notifyID=0;
-    public void showNotification(Context context, String message ){
-        if (message.contains("message")){
-
-        }
+    public void showNotification(Context context, String message) {
+        String name = context.getSharedPreferences("info", 0).getString("messageName", "");
         notifyID++;
         Intent intent = new Intent(context, MainActivity.class);
         intent.setAction(message);
@@ -39,23 +38,29 @@ import era.apps.happinessjar.R;
         NotificationCompat.Builder notification =
                 new NotificationCompat.Builder(context, CHANNEL_ID);
         notification.setSmallIcon(R.drawable.jam);
-        notification .setContentTitle(message.replace("message",""));
+        notification.setContentTitle(context.getString(R.string.app_name));
+        if (message.contains("message")) {
+            String messageToShow = message.replace("message", "");
+            if (name.length() > 0) {
+                messageToShow = "يا " + name + " " + messageToShow;
+            }
+            notification.setContentText(messageToShow);
+        } else if (message.contains("chat")) {
+            notification.setContentText(message.replace("chat", ""));
+        }
         notification.setContentIntent(pendingIntent);
         notification.setAutoCancel(true);
         NotificationManager mNotificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel mchannel = new NotificationChannel(CHANNEL_ID, context.getString(R.string.app_name)
                     , NotificationManager.IMPORTANCE_HIGH);
             mNotificationManager.createNotificationChannel(mchannel);
         }
-        mNotificationManager.notify(notifyID , notification.build());
-
+        mNotificationManager.notify(notifyID, notification.build());
 
 
     }
-
-
 
 
 }
